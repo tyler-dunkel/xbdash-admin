@@ -1,0 +1,16 @@
+{
+  "name": "xboxdash_admin",
+  "version": "1.0.0",
+  "description": "XBDash Admin Tools",
+  "main": "index.js",
+  "scripts": {
+    "admin": "MONGO_URL=mongodb://127.0.0.1:3001/meteor meteor run --port 9999"
+  },
+  "author": "XBDash Engineers",
+  "license": "ISC",
+  "dependencies": {
+    "react": "15.0.2",
+    "react-dom": "15.0.2",
+    "react-mounter": "1.2.0"
+  }
+}
