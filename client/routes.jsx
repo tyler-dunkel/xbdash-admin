@@ -2,12 +2,21 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import {MainLayout} from './layouts/MainLayout.jsx';
-import App from './App.jsx';
+import ArticleTool from './articletool/ArticleTool.jsx';
+import Home from './home/Home.jsx';
 
 FlowRouter.route('/', {
   action() {
     mount(MainLayout, {
-        content: (<App />)
+        content: (<Home />)
+      })
+  }
+});
+
+FlowRouter.route('/articletool', {
+  action() {
+    mount(MainLayout, {
+        content: (<ArticleTool />)
       })
   }
 });
