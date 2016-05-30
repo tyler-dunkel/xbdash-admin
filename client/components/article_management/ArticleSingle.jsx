@@ -13,8 +13,8 @@ export default class ArticleSingle extends Component{
               </ul>
             </div>
             <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+              <a href="#">Edit</a>
+              <a href="#">Delete</a>
             </div>
           </div>
         </div>
