@@ -8,12 +8,7 @@ export const ArticleEditorMain = ({content}) => (
   <div>
     <Nav />
     <div className="container">
-      <div>
-        <ArticleTitle />
-      </div>
-      <div>
-        <WysiwygEditor />
-      </div>
+      {content}
     </div>
   </div>
 )

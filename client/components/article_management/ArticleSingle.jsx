@@ -1,6 +1,11 @@
 import React,{Component} from 'react';
 
 export default class ArticleSingle extends Component{
+
+  getRouteUrl(){
+    return "/articletool/"+this.props.article._id;
+  }
+
   render() {
     return (
       <div classNameName="row">
@@ -13,7 +18,7 @@ export default class ArticleSingle extends Component{
               </ul>
             </div>
             <div className="card-action">
-              <a href="#">Edit</a>
+              <a href={this.getRouteUrl()}>Edit</a>
               <a href="#">Delete</a>
             </div>
           </div>

@@ -4,7 +4,7 @@ import {mount} from 'react-mounter';
 import {MainLayout} from './layouts/MainLayout.jsx';
 import {ArticleEditorMain} from './layouts/ArticleEditorMain.jsx';
 import {ArticleEditorEdit} from './layouts/ArticleEditorEdit.jsx';
-
+import ArticleTitle from './components/article_management/ArticleTitle.jsx';
 
 FlowRouter.route('/', {
   action() {
@@ -19,8 +19,10 @@ FlowRouter.route('/articletool', {
 });
 
 FlowRouter.route('/articletool/:postId', {
-  name: 'singleArticle',
   action(params) {
-    mount(ArticleEditorEdit)
+    console.log(params.postId);
+    mount(ArticleEditorEdit, {
+      content: (<ArticleTitle id={params.postId} />)
+    })
   }
 });
