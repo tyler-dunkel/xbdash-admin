@@ -6,6 +6,8 @@ import {ArticleEditorMain} from './layouts/ArticleEditorMain.jsx';
 import {ArticleEditorEdit} from './layouts/ArticleEditorEdit.jsx';
 import ArticleTitle from './components/article_management/ArticleTitle.jsx';
 import WysiwygEditor from './components/shared/WysiwygEditor.jsx';
+import ArticleList from './components/article_management/ArticleList.jsx';
+
 
 FlowRouter.route('/', {
   action() {
@@ -15,7 +17,9 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/articletool', {
   action() {
-    mount(ArticleEditorMain)
+    mount(ArticleEditorMain, {
+      articles: (<ArticleList />)
+    })
   }
 });
 

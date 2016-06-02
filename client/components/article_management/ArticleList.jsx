@@ -25,6 +25,12 @@ export default class ArticleList extends TrackerReact(Component) {
   }
 
   render() {
+    if(!this.getAllArticles()){
+      console.log("Loading Articles");
+      return(
+        <div>Loading...</div>
+      )
+    }
     return (
       <div>
         {this.getAllArticles().map( (article)=>{
