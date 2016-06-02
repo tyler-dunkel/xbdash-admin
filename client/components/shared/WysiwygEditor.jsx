@@ -17,16 +17,24 @@ export default class WysiwygEditor extends TrackerReact(Component) {
   }
 
   getArticle(){
-    return xbdNews.findOne({_id: this.props.id});
+    return xbdNews.findOne(this.props.id);
   }
 
   componentDidMount() {
+    let article = this.getArticle();
+    console.log("Editor component mounted.");
     $(document).ready(function() {
-      $('#wysiwyg-editor').summernote();
-    });  }
+      $('#wysiwyg-editor').summernote('code', article.content);
+    });}
 
     render() {
-      console.log(this.getArticle());
+      let article = this.getArticle();
+      console.log(article);
+      if(!article){
+        console.log("Loading editor");
+        return(<div>Loading Editor...</div>)
+      }
+
       return (
         <div id="wysiwyg-editor"></div>
       )

@@ -1,10 +1,32 @@
 import React,{Component} from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class ArticleTitle extends Component{
+export default class ArticleTitle extends TrackerReact(Component){
+  constructor(){
+    super();
+    this.state = {
+      subscription: {
+        xbdNews: Meteor.subscribe("allxbdnews")
+      }
+    }
+  }
+
+  componentWillUnmount(){
+    this.state.subscription.xbdNews.stop();
+  }
+
+  getArticle(){
+    return xbdNews.findOne(this.props.id);
+  }
+
   render() {
-    return (
+    let article = this.getArticle();
 
-      <div>This is the article title {id}</div>
+    if(!article){
+      return(<div>Loading...</div>)
+    }
+    return (
+      <h4>{article.title}</h4>
     )
   }
 };
