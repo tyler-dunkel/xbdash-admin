@@ -11,9 +11,8 @@ export default class Nav extends Component{
         <nav className="green lighten-1" role="navigation">
           <div className="nav-wrapper container"><a id="logo-container" href="/" className="brand-logo">XBDash Admin</a>
           <ul className="right hide-on-med-and-down">
-              <li><AccountsUI /></li>
+            <li><AccountsUI /></li>
           </ul>
-
           <ul id="nav-mobile" className="side-nav">
             <li><AccountsUI /></li>
           </ul>

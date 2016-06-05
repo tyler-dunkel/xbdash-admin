@@ -22,11 +22,17 @@ export default class ArticleTitle extends TrackerReact(Component){
   render() {
     let article = this.getArticle();
 
-    if(!article){
-      return(<div>Loading...</div>)
+    if(!article && this.props.id!='new'){
+      return(<div>Loading title...</div>)
+    } else if(article && this.props.id!='new'){
+      return (
+        <h4>{article.title}</h4>
+      )
+    } else {
+      return (
+        <h4>Title</h4>
+      )
     }
-    return (
-      <h4>{article.title}</h4>
-    )
+
   }
 };

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Nav from '../components/shared/Nav.jsx';
 
-export const ArticleEditorEdit = ({title,editor}) => (
+export const ArticleEditorNew = ({editor}) => (
   <div>
     <Nav />
     <div className="container">
       <div>
-        {title}
+          Insert new title
       </div>
       <div>
         {editor}
