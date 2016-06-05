@@ -1,12 +1,12 @@
 import React from 'react';
 import Nav from '../components/shared/Nav.jsx';
 
-export const ArticleEditorEdit = ({title,editor}) => (
+export const ArticleEditorEdit = ({article_details,editor}) => (
   <div>
     <Nav />
     <div className="container">
       <div>
-        {title}
+        {article_details}
       </div>
       <div>
         {editor}

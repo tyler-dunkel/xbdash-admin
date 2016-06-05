@@ -4,8 +4,7 @@ import {mount} from 'react-mounter';
 import {MainLayout} from './layouts/MainLayout.jsx';
 import {ArticleEditorMain} from './layouts/ArticleEditorMain.jsx';
 import {ArticleEditorEdit} from './layouts/ArticleEditorEdit.jsx';
-import {ArticleEditorNew} from './layouts/ArticleEditorNew.jsx';
-import ArticleTitle from './components/article_management/ArticleTitle.jsx';
+import ArticleDetails from './components/article_management/ArticleDetails.jsx';
 import WysiwygEditor from './components/shared/WysiwygEditor.jsx';
 import ArticleList from './components/article_management/ArticleList.jsx';
 
@@ -27,16 +26,8 @@ FlowRouter.route('/articletool', {
 FlowRouter.route('/articletool/:postId', {
   action(params) {
     mount(ArticleEditorEdit, {
-      title: (<ArticleTitle id={params.postId} />),
+      article_details: (<ArticleDetails id={params.postId} />),
       editor: (<WysiwygEditor id={params.postId} />)
-    })
-  }
-});
-
-FlowRouter.route('/articletool/new',{
-  action(params) {
-    mount(ArticleEditorNew, {
-      editor: (<WysiwygEditor id={params.postId}/>)
     })
   }
 });

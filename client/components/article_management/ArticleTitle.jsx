@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import InlineEdit from 'react-edit-inline';
 
 export default class ArticleTitle extends TrackerReact(Component){
   constructor(){
@@ -26,12 +27,27 @@ export default class ArticleTitle extends TrackerReact(Component){
       return(<div>Loading title...</div>)
     } else if(article && this.props.id!='new'){
       return (
-        <h4>{article.title}</h4>
+        <InlineEdit
+          activeClassName="editing"
+          text={article.title}
+          paramName="message"
+          style={{
+            display: 'inline-block',
+            fontSize: 25,
+          }}
+          />
       )
     } else {
       return (
-        <h4>Title</h4>
-      )
+        <InlineEdit
+          activeClassName="editing"
+          text="New Title"
+          paramName="message"
+          style={{
+            display: 'inline-block',
+            fontSize: 25,
+          }}
+          />      )
     }
 
   }
