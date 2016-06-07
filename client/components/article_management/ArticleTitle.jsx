@@ -26,11 +26,12 @@ export default class ArticleTitle extends TrackerReact(Component){
     if(!article && this.props.id!='new'){
       return(<div>Loading title...</div>)
     } else if(article && this.props.id!='new'){
+      console.log("Article title component mounted");
       return (
         <InlineEdit
           activeClassName="editing"
           text={article.title}
-          paramName="message"
+          paramName="title"
           style={{
             display: 'inline-block',
             fontSize: 25,
@@ -38,17 +39,18 @@ export default class ArticleTitle extends TrackerReact(Component){
           />
       )
     } else {
+      console.log("Article title component mounted");
       return (
         <InlineEdit
           activeClassName="editing"
-          text="New Title"
-          paramName="message"
+          text=""
+          paramName="title"
           style={{
             display: 'inline-block',
             fontSize: 25,
           }}
-          />      )
+          />
+      )
     }
-
   }
 };

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import InlineEdit from 'react-edit-inline';
 
 export default class ArticlePublished extends TrackerReact(Component) {
   constructor(){
@@ -21,11 +22,34 @@ export default class ArticlePublished extends TrackerReact(Component) {
 
   render() {
     let article = this.getArticle();
-    if(!article){
+    if(!article && this.props.id!='new'){
       return(<div>Loading published date...</div>)
+    } else if(article && this.props.id!='new') {
+      let published = "Published " + article.published.toString();
+      console.log("Article published component mounted");
+      return(
+        <InlineEdit
+          activeClassName="editing"
+          text={published}
+          paramName="published"
+          style={{
+            display: 'inline-block',
+            fontSize: 15,
+          }}
+          />
+      )
+    } else{
+      console.log("Article published component mounted");
+      return(
+        <InlineEdit
+          activeClassName="editing"
+          text="Article not yet published."
+          paramName="published"
+          style={{
+            display: 'inline-block',
+            fontSize: 15,
+          }}
+          />)
+        }
+      }
     }
-    return (
-      <b>Published: {article.published}</b>
-    )
-  }
-}
