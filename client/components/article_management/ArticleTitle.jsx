@@ -39,11 +39,11 @@ export default class ArticleTitle extends TrackerReact(Component){
           />
       )
     } else {
-      console.log("Article title component mounted");
+      console.log("Article new title component mounted");
       return (
         <InlineEdit
           activeClassName="editing"
-          text=""
+          text="Title"
           paramName="title"
           style={{
             display: 'inline-block',
