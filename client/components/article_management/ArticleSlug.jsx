@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import InlineEdit from 'react-edit-inline';
 
-export default class ArticleTitle extends TrackerReact(Component){
+export default class ArticleSlug extends TrackerReact(Component) {
   constructor(){
     super();
     this.state = {
@@ -22,35 +22,34 @@ export default class ArticleTitle extends TrackerReact(Component){
 
   render() {
     let article = this.getArticle();
-
     if(!article && this.props.id!='new'){
-      return(<div className="row">Loading title...</div>)
-    } else if(article && this.props.id!='new'){
-      console.log("Article title component mounted");
-      return (
+      return(<div className="row">Loading slug...</div>)
+    } else if(article && this.props.id!='new') {
+      console.log("Article slug component mounted");
+      return(
         <InlineEdit
           activeClassName="editing"
-          text={article.title}
-          paramName="title"
+          text={article.slug}
+          paramName="slug"
           style={{
             display: 'inline-block',
             fontSize: 15,
           }}
           />
       )
-    } else {
-      console.log("Article new title component mounted");
-      return (
+    } else{
+      console.log("Article slug component mounted");
+      return(
         <InlineEdit
           activeClassName="editing"
-          text="Enter title"
-          paramName="title"
+          text="Enter slug"
+          paramName="slug"
           style={{
             display: 'inline-block',
             fontSize: 15,
           }}
           />
-      )
+          )
+        }
+      }
     }
-  }
-};

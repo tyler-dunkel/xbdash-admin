@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import InlineEdit from 'react-edit-inline';
 
-export default class ArticleTitle extends TrackerReact(Component){
+export default class ArticleUpdated extends TrackerReact(Component) {
   constructor(){
     super();
     this.state = {
@@ -22,35 +22,36 @@ export default class ArticleTitle extends TrackerReact(Component){
 
   render() {
     let article = this.getArticle();
-
     if(!article && this.props.id!='new'){
-      return(<div className="row">Loading title...</div>)
-    } else if(article && this.props.id!='new'){
-      console.log("Article title component mounted");
-      return (
+      return(<div className="row">Loading updated date...</div>)
+    } else if(article && this.props.id!='new') {
+      let updated = "Published " + article.updated.toString();
+      console.log("Article updated component mounted");
+      return(
         <InlineEdit
           activeClassName="editing"
-          text={article.title}
-          paramName="title"
+          text={updated}
+          paramName="updated"
           style={{
             display: 'inline-block',
             fontSize: 15,
           }}
           />
       )
-    } else {
-      console.log("Article new title component mounted");
-      return (
+    } else{
+      console.log("Article updated component mounted");
+      let date = new Date().toString();
+      return(
         <InlineEdit
           activeClassName="editing"
-          text="Enter title"
-          paramName="title"
+          text={date}
+          paramName="updated"
           style={{
             display: 'inline-block',
             fontSize: 15,
           }}
           />
-      )
+          )
+        }
+      }
     }
-  }
-};

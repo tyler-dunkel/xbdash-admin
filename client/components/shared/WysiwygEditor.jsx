@@ -41,11 +41,11 @@ export default class WysiwygEditor extends TrackerReact(Component) {
       console.log(article);
       if(!article && this.props.id!='new'){
         console.log("Loading editor");
-        return(<div>Loading Editor...</div>)
+        return(<div className="row">Loading Editor...</div>)
       }
 
       return (
-        <div>
+        <div className="row">
         <div id="wysiwyg-editor"></div>
           <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
         </div>
