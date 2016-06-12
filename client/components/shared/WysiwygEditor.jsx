@@ -45,10 +45,8 @@ export default class WysiwygEditor extends TrackerReact(Component) {
       }
 
       return (
-        <div className="row">
-        <div id="wysiwyg-editor"></div>
-          <button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-        </div>
+          <textarea class="input-block-level" id="wysiwyg-editor" name="content" ref="Content">
+					</textarea>
       )
     }
 }

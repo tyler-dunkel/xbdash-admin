@@ -6,6 +6,7 @@ import ArticleUpdated from './ArticleUpdated.jsx';
 import ArticleAuthor from './ArticleAuthor.jsx';
 import ArticleSlug from './ArticleSlug.jsx';
 import ArticleSource from './ArticleSource.jsx';
+import WysiwygEditor from '../shared/WysiwygEditor.jsx';
 
 export default class ArticleDetails extends TrackerReact(Component){
   constructor(){
@@ -17,6 +18,21 @@ export default class ArticleDetails extends TrackerReact(Component){
     }
   }
 
+  componentDidMount() {
+    if(this.props.id!='new'){
+      let article = this.getArticle();
+      console.log("Editor component to edit article mounted.");
+      $(document).ready(function() {
+        $('#wysiwyg-editor').summernote('code', article.content);
+      });
+    } else {
+      console.log("Editor component for new article mounted.");
+      $(document).ready(function() {
+        $('#wysiwyg-editor').summernote();
+      });
+    }
+  }
+
   componentWillUnmount(){
     this.state.subscription.xbdNews.stop();
   }
@@ -25,40 +41,31 @@ export default class ArticleDetails extends TrackerReact(Component){
     return xbdNews.findOne(this.props.id);
   }
 
+  addArticle(event) {
+    event.preventDefault();
+    console.log(this);
+  }
+
   render(){
+    let article = this.getArticle();
     console.log("Article details component mounted.");
+    if(!article){
+      return(
+        <div>Loading details...</div>
+      )
+    }
     return(
       <div>
-        <div className="section">
-          <h5>Title</h5>
-          <ArticleTitle id={this.props.id} />
-        </div>
-        <div className="divider"></div>
-        <div className="section">
-          <h5>Published</h5>
-          <ArticlePublished id={this.props.id} />
-        </div>
-        <div className="divider"></div>
-        <div className="section">
-          <h5>Updated</h5>
-          <ArticleUpdated id={this.props.id} />
-        </div>
-        <div className="divider"></div>
-        <div className="section">
-          <h5>Author</h5>
-          <ArticleAuthor id={this.props.id} />
-        </div>
-        <div className="divider"></div>
-        <div className="section">
-          <h5>Slug</h5>
-          <ArticleSlug id={this.props.id} />
-        </div>
-        <div className="divider"></div>
-        <div className="section">
-          <h5>Source</h5>
-          <ArticleSource id={this.props.id} />
-        </div>
-        <div className="divider"></div>
+        <form onSubmit={this.addArticle.bind(this)}>
+          <input type="text" ref="Title" placeholder={article.title} />
+          <input type="text" ref="Published" placeholder={article.published}/>
+          <input type="text" ref="Updated" placeholder={article.updated} />
+          <input type="text" ref="Author" placeholder={article.author} />
+          <input type="text" ref="Slug" placeholder={article.slug} />
+          <input type="text" ref="Source" placeholder={article.source} />
+          <WysiwygEditor id={this.props.id}/>
+          <button type="submit" className="btn waves-effect waves-light">Submit</button>
+        </form>
       </div>
     )
   }

@@ -26,8 +26,7 @@ FlowRouter.route('/articletool', {
 FlowRouter.route('/articletool/:postId', {
   action(params) {
     mount(ArticleEditorEdit, {
-      article_details: (<ArticleDetails id={params.postId} />),
-      editor: (<WysiwygEditor id={params.postId} />)
+      article_details: (<ArticleDetails id={params.postId} />)
     })
   }
 });
