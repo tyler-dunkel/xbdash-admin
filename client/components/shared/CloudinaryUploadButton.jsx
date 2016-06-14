@@ -9,7 +9,7 @@ export default class CloudinaryUploadButton extends Component{
 
   render(){
     return(
-      <button onClick="cloudinaryUpload()" className="waves-effect waves-light btn">Cloudinary Upload</button>
+      <button onclick="cloudinaryUpload()" className="waves-effect waves-light btn">Cloudinary Upload</button>
     )
   }
 }
