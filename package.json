@@ -2,7 +2,8 @@
   "name": "xboxdash_admin",
   "private": true,
   "scripts": {
-    "admin": "MONGO_URL=mongodb://127.0.0.1:3001/meteor meteor run --port 9999"
+    "admin": "MONGO_URL=mongodb://127.0.0.1:3001/meteor meteor run --port 9999",
+    "prod" : "MONGO_URL=mongodb://xbadmin:tda88f552e87k15g@capital.4.mongolayer.com:10130,capital.5.mongolayer.com:10130/xbdash-production?replicaSet=set-569077792b73d794a800039f meteor run --port 9999"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
@@ -11,9 +12,9 @@
     "react-edit-inline": "^1.0.7",
     "react-mounter": "^1.2.0"
   },
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
-  "author": "",
+  "author": "XBdash",
   "license": "ISC",
-  "description": "XBDash Admin Tools"
+  "description": "XBdash Admin Tools"
 }
