@@ -50,33 +50,57 @@ export default class ArticleDetails extends TrackerReact(Component){
     let author = this.refs.Author.value.trim();
     let slug = this.refs.Slug.value.trim();
     let source = this.refs.Source.value.trim();
+    let linkhref = this.refs.LinkHref.value.trim();
     let wysiwygHtml = $('#wysiwyg-editor').summernote('code');
-    console.log(this.refs);
-    Meteor.call('addArticleServer', id, published, title, author, slug, source, wysiwygHtml)
-}
-
-render(){
-  let article = this.getArticle();
-  console.log("Article details component mounted.");
-  if(!article){
-    return(
-      <div>Loading details...</div>
-    )
+    console.log(wysiwygHtml);
+    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, ()=>{
+      console.log("Article submitted");
+      Materialize.toast('Article submitted', 4000);
+    })
   }
-  return(
-    <div>
-      <form onSubmit={this.addArticle.bind(this)}>
-        <input type="text" id="Title" ref="Title" placeholder={article.title} value={article.title} />
-        <input type="text" id="Published" ref="Published" placeholder={article.published} value ={article.published} />
-        <input type="text" id="Updated" ref="Updated" placeholder={article.updated} value ={article.published} />
-        <input type="text" id="Author" ref="Author" placeholder={article.author} value ={article.author} />
-        <input type="text" id="Slug" ref="Slug" placeholder={article.slug} value ={article.slug} />
-        <input type="text" id="Source" ref="Source" placeholder={article.source} value ={article.source} />
-        <WysiwygEditor id={this.props.id}/>
-        <button type="submit" className="btn waves-effect waves-light">Submit</button>
-      </form>
-    </div>
-  )
 
-}
+  render(){
+    let article = this.getArticle();
+    console.log("Article details component mounted.");
+    if(!article && this.props.id!='new'){
+      return(
+        <div>Loading details...</div>
+      )
+    } if(!article && this.props.id=='new'){
+      let newDate = new Date();
+      return(
+        <div>
+          <form onSubmit={this.addArticle.bind(this)}>
+            <input type="text" id="Title" ref="Title" placeholder="Title" />
+            <input type="text" id="Published" ref="Published" placeholder={newDate} defaultValue={newDate}/>
+            <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue={newDate} />
+            <input type="text" id="Author" ref="Author" placeholder="Author" />
+            <input type="text" id="Slug" ref="Slug" placeholder="Slug" />
+            <input type="text" id="Source" ref="Source" placeholder="Source" />
+            <input type="text" id="LinkHref" ref="LinkHref" placeholder="Link href" />
+            <WysiwygEditor id={this.props.id}/>
+            <button type="submit" className="btn waves-effect waves-light">Submit</button>
+          </form>
+        </div>
+      )
+    } else {
+      let newDate = new Date();
+      return(
+        <div>
+          <form onSubmit={this.addArticle.bind(this)}>
+            <input type="text" id="Title" ref="Title" placeholder={article.title} defaultValue={article.title} />
+            <input type="text" id="Published" ref="Published" placeholder={article.published} defaultValue ={article.published} />
+            <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue ={newDate} />
+            <input type="text" id="Author" ref="Author" placeholder={article.author} defaultValue ={article.author} />
+            <input type="text" id="Slug" ref="Slug" placeholder={article.slug} defaultValue ={article.slug} />
+            <input type="text" id="Source" ref="Source" placeholder={article.source} defaultValue ={article.source} />
+            <input type="text" id="LinkHref" ref="LinkHref" placeholder={article.link.href} defaultValue ={article.link.href} />
+            <WysiwygEditor id={this.props.id}/>
+            <button type="submit" className="btn waves-effect waves-light">Submit</button>
+          </form>
+        </div>
+      )
+    }
+
+  }
 }
