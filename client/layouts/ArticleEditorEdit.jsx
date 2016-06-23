@@ -7,13 +7,26 @@ export const ArticleEditorEdit = ({article_details,editor}) => (
     <Nav />
     <div className="container">
       <CloudinaryUploadButton />
-      <div id="cloudinary_links"></div>
       <div>
-        {article_details}
+        <table className="highlight">
+          <thead>
+            <tr>
+              <th data-field="thumbnail">Thumbnail</th>
+              <th data-field="url">URL</th>
+            </tr>
+          </thead>
+          <tbody id="cloudinary_links">
+
+          </tbody>
+        </table>
       </div>
-      <div>
-        {editor}
-      </div>
+    <div>
+      {article_details}
+    </div>
+    <div>
+      {editor}
     </div>
   </div>
+</div>
+
 )

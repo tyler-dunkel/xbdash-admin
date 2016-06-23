@@ -6,10 +6,11 @@ $(function() {
       console.log("Cloudinary upload widget opened.");
       cloudinary.openUploadWidget({ cloud_name: 'xbdash', upload_preset: 'u2t0pjrn', 'folder': 'articles'},
         function(error, result) {
-          console.log(error, result[0].url);
+          console.log(error, result);
           for (var i =0; i < result.length; i++){
             console.log(result[i].url);
-            $( "#cloudinary_links" ).append(result[i].url+"<br/>");
+            $( "#cloudinary_links" ).append("<tr><td><img src=\""+result[i].thumbnail_url+"\"/></td><td>"+result[i].url+"</td></tr>");
+
           }
         });
     }, false);
