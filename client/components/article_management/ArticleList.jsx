@@ -21,7 +21,7 @@ export default class ArticleList extends TrackerReact(Component) {
   }
 
   getAllArticles(){
-    return xbdNews.find().fetch();
+    return xbdNews.find({ "source": "xbdash" }, { sort: { "published": -1 }}).fetch();
   }
 
   render() {
