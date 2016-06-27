@@ -3,7 +3,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import InlineEdit from 'react-edit-inline';
 
 export default class ArticleSlug extends TrackerReact(Component) {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       subscription: {
@@ -12,18 +12,18 @@ export default class ArticleSlug extends TrackerReact(Component) {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.subscription.xbdNews.stop();
   }
 
-  getArticle(){
+  getArticle() {
     return xbdNews.findOne(this.props.id);
   }
 
   render() {
     let article = this.getArticle();
     if(!article && this.props.id!='new'){
-      return(<div className="row">Loading slug...</div>)
+      return("<div className='row'>Loading slug...</div>");
     } else if(article && this.props.id!='new') {
       console.log("Article slug component mounted");
       return(
@@ -37,7 +37,7 @@ export default class ArticleSlug extends TrackerReact(Component) {
           }}
           />
       )
-    } else{
+    } else {
       console.log("Article slug component mounted");
       return(
         <InlineEdit
@@ -49,7 +49,7 @@ export default class ArticleSlug extends TrackerReact(Component) {
             fontSize: 15,
           }}
           />
-          )
-        }
-      }
+      )
     }
+  }
+}
