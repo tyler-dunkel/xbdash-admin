@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/shared/Nav.jsx';
 import CloudinaryUploadButton from '../components/shared/CloudinaryUploadButton.jsx';
 
-export const ArticleEditorEdit = ({article_details,editor}) => (
+export const ArticleEditorEdit = ({article_details}) => (
   <div>
     <Nav />
     <div className="container">
