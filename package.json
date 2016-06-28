@@ -14,7 +14,7 @@
     "react-edit-inline": "^1.0.7",
     "react-mounter": "^1.2.0"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "author": "XBdash",
   "license": "ISC",
