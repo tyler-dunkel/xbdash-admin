@@ -1,11 +1,5 @@
 import React,{Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import ArticleTitle from './ArticleTitle.jsx';
-import ArticlePublished from './ArticlePublished.jsx';
-import ArticleUpdated from './ArticleUpdated.jsx';
-import ArticleAuthor from './ArticleAuthor.jsx';
-import ArticleSlug from './ArticleSlug.jsx';
-import ArticleSource from './ArticleSource.jsx';
 import WysiwygEditor from '../shared/WysiwygEditor.jsx';
 
 

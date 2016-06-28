@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from '../components/shared/Nav.jsx';
 import CloudinaryUploadButton from '../components/shared/CloudinaryUploadButton.jsx';
 
-export const ArticleEditorEdit = ({article_details}) => (
+export const ContestManagementEdit = ({contest_details}) => (
   <div>
     <Nav />
     <div className="container">
@@ -21,10 +21,7 @@ export const ArticleEditorEdit = ({article_details}) => (
         </table>
       </div>
     <div>
-      {article_details}
-    </div>
-    <div>
-      {editor}
+      {contest_details}
     </div>
   </div>
 </div>
