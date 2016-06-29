@@ -30,5 +30,33 @@ Meteor.methods({
       { upsert: true }
     );
 
+  },
+
+  addContestServer(id, status, contestToken, startDate, endDate, sendDate, prizes, rules) {
+    if(id==='new'){
+      id = "";
+    }
+    xbdNews.update(
+      { _id: id },
+      {
+        "status": status,
+        "contestToken": contestToken,
+        "startDate": startDate,
+        "endDate": endDate,
+        "sendDate": sendDate,
+        "prizes": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": linkhref
+        },
+        "rules": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": linkhref
+        }
+      },
+      { upsert: true }
+    );
+
   }
 });

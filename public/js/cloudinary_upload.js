@@ -10,7 +10,6 @@ $(function() {
           for (var i =0; i < result.length; i++){
             console.log(result[i].url);
             $( "#cloudinary_links" ).append("<tr><td><img src=\""+result[i].thumbnail_url+"\"/></td><td>"+result[i].url+"</td></tr>");
-
           }
         });
     }, false);

@@ -13,6 +13,7 @@ export default class ContestDetails extends TrackerReact(Component) {
 
   componentDidMount() {
     console.log("Contest details component mounted");
+    $('select').material_select();
   }
 
   componentWillUnmount() {
@@ -27,24 +28,55 @@ export default class ContestDetails extends TrackerReact(Component) {
     let contest = this.getContest();
     if(this.props.id==='new'){
       return(
-        <div>
-          <input type="text" id="Status" placeholder="Status" />
-          <input type="text" id="contestToken" placeholder="Contest Token" />
-          <input type="datetime" id="StartDate" />
-          <input type="datetime" id="EndDate" />
-          <input type="datetime" id="SendPrizeDate" />
-        </div>
+        <form>
+          <div>
+            <div className="input-field">
+              <input type="text" id="Title" className="validate" />
+              <label for="Title">Title</label>
+            </div>
+            <div className="input-field">
+              <select id="Status">
+                <option value="Active" selected>Active</option>
+                <option value="Disabled">Disabled</option>
+              </select>
+              <label for="Status">Status</label>
+            </div>
+            <div className="input-field">
+              <input type="text" id="ContestToken" className="validate" />
+              <label for="ContestToken">Contest Token</label>
+            </div>
+            <div>
+              <label for="StartDate">Start Date</label>
+              <input type="datetime-local" id="StartDate" />
+            </div>
+            <div>
+              <label for="StartDate">End Date</label>
+              <input type="datetime-local" id="EndDate" />
+            </div>
+            <div>
+              <label for="SendPrizeDate">Send Prize Date</label>
+              <input type="datetime-local" id="SendPrizeDate" />
+            </div>
+          </div>
+          <button type="submit" className="btn waves-effect waves-light">Submit</button>
+        </form>
       )
     }
     else{
       return(
-        <div>
-          <input type="text" id="Status" placeholder={contest.status} />
-          <input type="text" id="ContestToken" placeholder={contest.token} />
-          <input type="datetime" id="StartDate" />
-          <input type="datetime" id="EndDate" />
-          <input type="datetime" id="SendPrizeDate" />
-        </div>
+        <form>
+          <div>
+            <input type="text" id="Title" placeholder="Title" />
+            <select id="Status">
+              <option value="Active" selected>Active</option>
+              <option value="Disabled">Disabled</option>
+            </select>
+            <input type="text" id="contestToken" placeholder="Contest Token" />
+            <input type="datetime" id="StartDate" />
+            <input type="datetime" id="EndDate" />
+            <input type="datetime" id="SendPrizeDate" />
+          </div>
+        </form>
       )
     }
 
