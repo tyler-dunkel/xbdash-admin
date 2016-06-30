@@ -17,14 +17,13 @@ export default class ContestDetails extends TrackerReact(Component) {
 
 
         $(document).ready(function () {
-            $(".add-row").click(function () {
+            $("#add-row").click(function () {
                 var $clone = $("#prizeArea").first().clone();
-                $clone.append("<button type=\"button\" class=\"remove-row\">-</button>");
-                $clone.insertBefore(".add-row");
+                $clone.append("<button type=\"button\" id=\"remove-row\" class=\"btn-floating btn-large waves-effect waves-light red\"><i class=\"material-icons\">delete</i></button>");
+                $clone.insertBefore("#add-row");
             });
 
-            $(".remove-row").on("click", ".remove-row", function () {
-                console.log("remove clicked");
+            $(document).on("click", "#remove-row", function () {
                 $(this).closest("#prizeArea").remove();
             });
         });
@@ -81,7 +80,7 @@ export default class ContestDetails extends TrackerReact(Component) {
                         </select>
                         <input type="text" id="PrizeImageUrl" placeholder="Prize Image Url"/>
                     </div>
-                    <button type="button" className="add-row">+</button>
+                    <button type="button" id="add-row" className="btn-floating btn-large waves-effect waves-light green"><i className="material-icons">add</i></button>
                     <button type="submit" className="btn waves-effect waves-light">Submit</button>
                 </form>
 
