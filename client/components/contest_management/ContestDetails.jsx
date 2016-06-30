@@ -16,16 +16,16 @@ export default class ContestDetails extends TrackerReact(Component) {
         $('select').material_select();
 
 
-        $(document).ready(function(){
-            $( ".add-row" ).click(function(){
-                var $clone = $( "#prizeArea" ).first().clone();
-                $clone.append( "<button type='button' class='remove-row'>-</button>" );
-                $clone.insertBefore( ".add-row" );
+        $(document).ready(function () {
+            $(".add-row").click(function () {
+                var $clone = $("#prizeArea").first().clone();
+                $clone.append("<button type=\"button\" class=\"remove-row\">-</button>");
+                $clone.insertBefore(".add-row");
             });
 
-            $( ".remove-row" ).on("click", ".remove-row", function(){
+            $(".remove-row").on("click", ".remove-row", function () {
                 console.log("remove clicked");
-                $(this).parent().remove();
+                $(this).closest("#prizeArea").remove();
             });
         });
     }
