@@ -19,7 +19,7 @@ export default class ContestDetails extends TrackerReact(Component) {
         $(document).ready(function () {
             $("#add-row").click(function () {
                 var $clone = $("#prizeArea").first().clone();
-                $clone.append("<button type=\"button\" id=\"remove-row\" class=\"btn-floating btn-large waves-effect waves-light red\"><i class=\"material-icons\">delete</i></button>");
+                $clone.append("<button type=\"button\" id=\"remove-row\" class=\"btn-floating btn-large waves-effect waves-light red\"><i class=\"material-icons\">delete</i></button><br/>");
                 $clone.insertBefore("#add-row");
             });
 
@@ -31,6 +31,31 @@ export default class ContestDetails extends TrackerReact(Component) {
 
     componentWillUnmount() {
         this.state.subscription.xbdContests.stop();
+    }
+
+    getPrizesFormat() {
+        //Method to format prizes into an array for the server method.
+    }
+
+    getRulesFormat() {
+        //Method to format rules into an array for the server method.
+    }
+
+    addContest(event) {
+        event.preventDefault();
+        let id = this.props.id;
+        let status = this.refs.Status.value.trim();
+        let contestToken = this.refs.ContestToken.value.trim();
+        let startDate = this.refs.StartDate.value.trim();
+        let endDate = this.refs.EndDate.value.trim();
+        let sendDate = this.refs.SendDate.value.trim();
+        let prizes = this.refs.Prizes.value.trim();
+        let rules = this.refs.Rules.value.trim();
+
+        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendDate, prizes, rules, ()=>{
+            console.log("Contest submitted");
+            Materialize.toast('Contest submitted', 4000);
+        })
     }
 
     getContest() {
@@ -72,6 +97,7 @@ export default class ContestDetails extends TrackerReact(Component) {
                         <label for="Status">Status</label>
                     </div>
                     <h5>Prizes</h5>
+                    <hr />
                     <div id="prizeArea">
                         <input type="text" id="PrizeTitle" placeholder="Prize Title"/>
                         <select id="IsPremium">
@@ -81,6 +107,7 @@ export default class ContestDetails extends TrackerReact(Component) {
                         <input type="text" id="PrizeImageUrl" placeholder="Prize Image Url"/>
                     </div>
                     <button type="button" id="add-row" className="btn-floating btn-large waves-effect waves-light green"><i className="material-icons">add</i></button>
+                    <br/><br/>
                     <button type="submit" className="btn waves-effect waves-light">Submit</button>
                 </form>
 
