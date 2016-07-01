@@ -33,17 +33,29 @@ export default class ContestDetails extends TrackerReact(Component) {
         this.state.subscription.xbdContests.stop();
     }
 
-    getPrizesFormat(PrizeTitle1, IsPremium1, PrizeImgUrl1, PrizeTitle2, IsPremium2, PrizeImgUrl2, PrizeTitle3, IsPremium3, PrizeImgUrl3, PrizeTitle4, IsPremium4, PrizeImgUrl4, PrizeTitle5, IsPremium5, PrizeImgUrl5) {
-        let prizes = [];
-        for (var i = 0; i < 5; i++) {
-            if (PrizeTitle){
-
+    getPrizesFormat(prizeArray) {
+        var prizesFormatted = [];
+        console.log(prizeArray);
+        for (var i = 0; i < prizeArray.length; i++) {
+            var prize = prizeArray[i];
+            if (prize[i][0] != "") {
+                prizesFormatted[prizesFormatted.length] = {"title" : prize[i][0], "isPremium" : prize[i][1], "prizeImgUrl" : prize[i][2]};
             }
         }
+
+        console.log(prizesFormatted)
+
+        return prizesFormatted;
     }
 
-    getRulesFormat() {
-        //Method to format rules into an array for the server method.
+    getRulesFormat(ruleArray) {
+        var rulesFormatted = [];
+        console.log(ruleArray);
+        for (var i = 0; i < ruleArray.length; i++){
+            if(ruleArray[i]!=""){
+                rulesFormatted[rulesFormatted.length] = {"rule" : ruleArray[i]};
+            }
+        }
     }
 
     addContest(event) {
@@ -56,18 +68,24 @@ export default class ContestDetails extends TrackerReact(Component) {
         let sendPrizeDate = this.refs.SendPrizeDate.value.trim();
         let status = this.refs.Status.value.trim();
         let prizeArray = []
-        let prizes = getPrizesFormat([
-            [this.refs.PrizeTitle1.value.trim(), this.refs.IsPremium1.value.trim(), this.refs.PrizeImgUrl1.value.trim()],
-            [this.refs.PrizeTitle2.value.trim(), this.refs.IsPremium2.value.trim(), this.refs.PrizeImgUrl2.value.trim()],
-            [this.refs.PrizeTitle3.value.trim(), this.refs.IsPremium3.value.trim(), this.refs.PrizeImgUrl3.value.trim()],
-            [this.refs.PrizeTitle4.value.trim(), this.refs.IsPremium4.value.trim(), this.refs.PrizeImgUrl4.value.trim()],
-            [this.refs.PrizeTitle5.value.trim(), this.refs.IsPremium5.value.trim(), this.refs.PrizeImgUrl5.value.trim()]]
-        );
-        let rules = getRulesFormat();
-        //Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendDate, prizes, rules, ()=>{
-        //    console.log("Contest submitted");
-        //    Materialize.toast('Contest submitted', 4000);
-        //})
+        let prizes = this.getPrizesFormat([
+            [this.refs.PrizeTitle1.value.trim(), this.refs.IsPremium1.value.trim(), this.refs.PrizeImageUrl1.value.trim()],
+            [this.refs.PrizeTitle2.value.trim(), this.refs.IsPremium2.value.trim(), this.refs.PrizeImageUrl2.value.trim()],
+            [this.refs.PrizeTitle3.value.trim(), this.refs.IsPremium3.value.trim(), this.refs.PrizeImageUrl3.value.trim()],
+            [this.refs.PrizeTitle4.value.trim(), this.refs.IsPremium4.value.trim(), this.refs.PrizeImageUrl4.value.trim()],
+            [this.refs.PrizeTitle5.value.trim(), this.refs.IsPremium5.value.trim(), this.refs.PrizeImageUrl5.value.trim()]
+        ]);
+        let rules = this.getRulesFormat([
+            this.refs.Rule1.value.trim(),
+            this.refs.Rule2.value.trim(),
+            this.refs.Rule3.value.trim(),
+            this.refs.Rule4.value.trim(),
+            this.refs.Rule5.value.trim()
+        ]);
+        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendDate, prizes, rules, ()=>{
+            console.log("Contest submitted");
+            Materialize.toast('Contest submitted', 4000);
+        })
     }
 
     getContest() {
