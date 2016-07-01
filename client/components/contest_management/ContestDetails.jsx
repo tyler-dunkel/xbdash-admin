@@ -35,6 +35,7 @@ export default class ContestDetails extends TrackerReact(Component) {
 
     getPrizesFormat() {
         //Method to format prizes into an array for the server method.
+        //Prizes
     }
 
     getRulesFormat() {
