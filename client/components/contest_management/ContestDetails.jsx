@@ -34,17 +34,20 @@ export default class ContestDetails extends TrackerReact(Component) {
     }
 
     getPrizesFormat(prizeArray) {
+      console.log("The prizeArray is logged below this line:");
+      console.log(prizeArray);
+      console.log(prizeArray[0]);
         var prizesFormatted = [];
-        console.log(prizeArray);
+        console.log("The prizeArray length is " + prizeArray.length);
         for (var i = 0; i < prizeArray.length; i++) {
             var prize = prizeArray[i];
-            if (prize[i][0] != "") {
-                prizesFormatted[prizesFormatted.length] = {"title" : prize[i][0], "isPremium" : prize[i][1], "prizeImgUrl" : prize[i][2]};
+            console.log("var i is " + i);
+            console.log(prize[i]);
+            if (prize[0] != "") {
+                prizesFormatted[prizesFormatted.length] = {"title" : prize[0], "isPremium" : prize[1], "prizeImgUrl" : prize[2]};
             }
         }
-
-        console.log(prizesFormatted)
-
+        console.log(prizesFormatted);
         return prizesFormatted;
     }
 
@@ -56,6 +59,7 @@ export default class ContestDetails extends TrackerReact(Component) {
                 rulesFormatted[rulesFormatted.length] = {"rule" : ruleArray[i]};
             }
         }
+        return rulesFormatted;
     }
 
     addContest(event) {
@@ -67,13 +71,12 @@ export default class ContestDetails extends TrackerReact(Component) {
         let endDate = this.refs.EndDate.value.trim();
         let sendPrizeDate = this.refs.SendPrizeDate.value.trim();
         let status = this.refs.Status.value.trim();
-        let prizeArray = []
         let prizes = this.getPrizesFormat([
-            [this.refs.PrizeTitle1.value.trim(), this.refs.IsPremium1.value.trim(), this.refs.PrizeImageUrl1.value.trim()],
-            [this.refs.PrizeTitle2.value.trim(), this.refs.IsPremium2.value.trim(), this.refs.PrizeImageUrl2.value.trim()],
-            [this.refs.PrizeTitle3.value.trim(), this.refs.IsPremium3.value.trim(), this.refs.PrizeImageUrl3.value.trim()],
-            [this.refs.PrizeTitle4.value.trim(), this.refs.IsPremium4.value.trim(), this.refs.PrizeImageUrl4.value.trim()],
-            [this.refs.PrizeTitle5.value.trim(), this.refs.IsPremium5.value.trim(), this.refs.PrizeImageUrl5.value.trim()]
+            [this.refs.PrizeTitle1.value.trim(), $( "#IsPremium1" ).val(), this.refs.PrizeImageUrl1.value.trim()],
+            [this.refs.PrizeTitle2.value.trim(), $( "#IsPremium2" ).val(), this.refs.PrizeImageUrl2.value.trim()],
+            [this.refs.PrizeTitle3.value.trim(), $( "#IsPremium3" ).val(), this.refs.PrizeImageUrl3.value.trim()],
+            [this.refs.PrizeTitle4.value.trim(), $( "#IsPremium4" ).val(), this.refs.PrizeImageUrl4.value.trim()],
+            [this.refs.PrizeTitle5.value.trim(), $( "#IsPremium5" ).val(), this.refs.PrizeImageUrl5.value.trim()]
         ]);
         let rules = this.getRulesFormat([
             this.refs.Rule1.value.trim(),
@@ -82,7 +85,7 @@ export default class ContestDetails extends TrackerReact(Component) {
             this.refs.Rule4.value.trim(),
             this.refs.Rule5.value.trim()
         ]);
-        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendDate, prizes, rules, ()=>{
+        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules, ()=>{
             console.log("Contest submitted");
             Materialize.toast('Contest submitted', 4000);
         })
@@ -120,8 +123,8 @@ export default class ContestDetails extends TrackerReact(Component) {
                         </div>
                     </div>
                     <div>
-                        <select id="Status" ref="Status">
-                            <option value="Active" selected>Active</option>
+                        <select id="Status" ref="Status" defaultValue="Active">
+                            <option value="Active">Active</option>
                             <option value="Disabled">Disabled</option>
                         </select>
                         <label for="Status">Status</label>
@@ -131,41 +134,41 @@ export default class ContestDetails extends TrackerReact(Component) {
                     <hr />
                     <div id="prizeArea1">
                         <input type="text" id="PrizeTitle1" ref="PrizeTitle1" placeholder="Prize Title"/>
-                        <select id="IsPremium1" ref="IsPremium1">
-                            <option value="true" selected>true</option>
-                            <option value="false">false</option>
+                        <select id="IsPremium1" ref="IsPremium1" defaultValue="true">
+                            <option value="true" ref="true">true</option>
+                            <option value="false" ref="false">false</option>
                         </select>
                         <input type="text" id="PrizeImageUrl1" ref="PrizeImageUrl1" placeholder="Prize Image Url"/>
                     </div>
                     <div id="prizeArea2">
                         <input type="text" id="PrizeTitle2" ref="PrizeTitle2" placeholder="Prize Title"/>
-                        <select id="IsPremium2" ref="IsPremium2">
-                            <option value="true" selected>true</option>
-                            <option value="false">false</option>
+                        <select id="IsPremium2" ref="IsPremium2" defaultValue="true">
+                            <option value="true" ref="true">true</option>
+                            <option value="false" ref="false">false</option>
                         </select>
                         <input type="text" id="PrizeImageUrl2" ref="PrizeImageUrl2" placeholder="Prize Image Url"/>
                     </div>
                     <div id="prizeArea3">
                         <input type="text" id="PrizeTitle3" ref="PrizeTitle3" placeholder="Prize Title"/>
-                        <select id="IsPremium3" ref="IsPremium3">
-                            <option value="true" selected>true</option>
-                            <option value="false">false</option>
+                        <select id="IsPremium3" ref="IsPremium3" defaultValue="true">
+                            <option value="true" ref="true">true</option>
+                            <option value="false" ref="false">false</option>
                         </select>
                         <input type="text" id="PrizeImageUrl3" ref="PrizeImageUrl3" placeholder="Prize Image Url"/>
                     </div>
                     <div id="prizeArea4">
                         <input type="text" id="PrizeTitle4" ref="PrizeTitle4" placeholder="Prize Title"/>
-                        <select id="IsPremium4" ref="IsPremium4">
-                            <option value="true" selected>true</option>
-                            <option value="false">false</option>
+                        <select id="IsPremium4" ref="IsPremium4" defaultValue="true">
+                            <option value="true" ref="true">true</option>
+                            <option value="false" ref="false">false</option>
                         </select>
                         <input type="text" id="PrizeImageUrl4" ref="PrizeImageUrl4" placeholder="Prize Image Url"/>
                     </div>
                     <div id="prizeArea5">
                         <input type="text" id="PrizeTitle5" ref="PrizeTitle5" placeholder="Prize Title"/>
-                        <select id="IsPremium5">
-                            <option value="true" selected>true</option>
-                            <option value="false">false</option>
+                        <select id="IsPremium5" defaultValue="true">
+                            <option value="true" ref="true">true</option>
+                            <option value="false" ref="false">false</option>
                         </select>
                         <input type="text" id="PrizeImageUrl5" ref="PrizeImageUrl5" placeholder="Prize Image Url"/>
                     </div>

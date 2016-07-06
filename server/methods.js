@@ -32,18 +32,18 @@ Meteor.methods({
 
     },
 
-    addContestServer(id, status, contestToken, startDate, endDate, sendDate, prizes, rules) {
+    addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules) {
         if (id === 'new') {
             id = "";
         }
-        xbdNews.update(
+        xbdContests.update(
             {_id: id},
             {
                 "status": status,
                 "contestToken": contestToken,
                 "startDate": startDate,
                 "endDate": endDate,
-                "sendDate": sendDate,
+                "sendPrizeDate": sendPrizeDate,
                 "prizes": prizes,
                 "rules": rules
             },
