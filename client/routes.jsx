@@ -49,3 +49,19 @@ FlowRouter.route('/contesttool/:contestId', {
     })
   }
 });
+
+FlowRouter.route('/announcementtool', {
+  action() {
+    mount(AnnouncmentManagementMain, {
+      announcments: (<AnnouncementList />)
+    })
+  }
+});
+
+FlowRouter.route('/announcementtool/:announcementId', {
+  action(params) {
+    mount(AnnouncmentManagementEdit, {
+      announcement_details: (<AnnouncementDetails id={params.announcementId} />)
+    })
+  }
+});

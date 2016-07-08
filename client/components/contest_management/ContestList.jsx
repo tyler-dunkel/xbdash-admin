@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import ContestSingle from './ContestSingle.jsx';
@@ -7,7 +7,7 @@ xbdContests = new Mongo.Collection("xbdcontests");
 
 export default class ContestList extends TrackerReact(Component) {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       subscription: {
@@ -16,26 +16,26 @@ export default class ContestList extends TrackerReact(Component) {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.subscription.xbdContests.stop();
   }
 
-  getAllContests(){
+  getAllContests() {
     return xbdContests.find().fetch();
   }
 
   render() {
-    if(!this.getAllContests()){
+    if (!this.getAllContests()) {
       console.log("Loading Contests...");
-      return(
+      return (
         <div>Loading...</div>
       )
     }
     return (
       <div>
-        {this.getAllContests().map( (contest)=>{
+        {this.getAllContests().map((contest) => {
           return <ContestSingle contest={contest} />
-        })}
+        }) }
       </div>
     )
   }
