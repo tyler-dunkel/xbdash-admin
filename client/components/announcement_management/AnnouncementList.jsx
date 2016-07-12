@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import AnnouncementSingle from './AnnouncementSingle.jsx';
 
@@ -9,7 +9,7 @@ export default class AnnouncementList extends TrackerReact(Component) {
         super();
         this.state = {
             subscription: {
-                xbdAnnouncements: Meteor.subscribe("allxbdannouncments")
+                xbdAnnouncements: Meteor.subscribe("allxbdannouncements")
             }
         }
     }
@@ -28,8 +28,8 @@ export default class AnnouncementList extends TrackerReact(Component) {
         }
         return (
             <div>
-                {this.getAllAnnouncements().map((announcment) => {
-                    return <AnnouncementSingle contest={announcment} />
+                {this.getAllAnnouncements().map((announcement) => {
+                    return <AnnouncementSingle contest={announcement} />
                 }) }
             </div>
         )

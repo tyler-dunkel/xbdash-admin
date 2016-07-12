@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class AnnouncementDetails extends TrackerReact(Component) {
@@ -6,7 +6,7 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
         super();
         this.state = {
             subscription: {
-                xbdAnnouncements: Meteor.subscribe("allxbdannouncements");
+                xbdAnnouncements: Meteor.subscribe("allxbdannouncements")
             }
         }
     }
