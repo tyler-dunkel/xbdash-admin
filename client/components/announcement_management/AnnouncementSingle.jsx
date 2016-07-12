@@ -12,10 +12,7 @@ export default class AnnouncementSingle extends Component{
         <div className="col s12 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
-              <span className="card-title">Announcement title</span>
-              <ul>
-                <li>Announcement Information Here</li>>
-              </ul>
+              <span className="card-title">{this.props.announcement.title}</span>
             </div>
             <div className="card-action">
               <a href={this.getRouteUrl()}>Edit</a>

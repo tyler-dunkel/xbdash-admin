@@ -1,10 +1,10 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import WysiwygEditor from '../shared/WysiwygEditor.jsx';
 
 
-export default class ArticleDetails extends TrackerReact(Component){
-  constructor(){
+export default class ArticleDetails extends TrackerReact(Component) {
+  constructor() {
     super();
     this.state = {
       subscription: {
@@ -14,25 +14,26 @@ export default class ArticleDetails extends TrackerReact(Component){
   }
 
   componentDidMount() {
-    if(this.props.id!='new'){
+    console.log("Article details component mounted.");
+    if (this.props.id != 'new') {
       let article = this.getArticle();
       console.log("Editor component to edit article mounted.");
-      $(document).ready(function() {
+      $(document).ready(function () {
         $('#wysiwyg-editor').summernote('code', article.content);
       });
     } else {
       console.log("Editor component for new article mounted.");
-      $(document).ready(function() {
+      $(document).ready(function () {
         $('#wysiwyg-editor').summernote();
       });
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.subscription.xbdNews.stop();
   }
 
-  getArticle(){
+  getArticle() {
     return xbdNews.findOne(this.props.id);
   }
 
@@ -47,24 +48,23 @@ export default class ArticleDetails extends TrackerReact(Component){
     let linkhref = this.refs.LinkHref.value.trim();
     let wysiwygHtml = $('#wysiwyg-editor').summernote('code');
     console.log(wysiwygHtml);
-    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, ()=>{
+    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, () => {
       console.log("Article submitted");
       Materialize.toast('Article submitted', 4000);
     })
   }
 
-  render(){
+  render() {
     let article = this.getArticle();
-    console.log("Article details component mounted.");
-    if(!article && this.props.id!='new'){
-      return(
+    if (!article && this.props.id != 'new') {
+      return (
         <div>Loading details...</div>
       )
-    } if(!article && this.props.id=='new'){
+    } if (!article && this.props.id == 'new') {
       let newDate = new Date();
-      return(
+      return (
         <div>
-          <form onSubmit={this.addArticle.bind(this)}>
+          <form onSubmit={this.addArticle.bind(this) }>
             <input type="text" id="Title" ref="Title" placeholder="Title" />
             <input type="text" id="Published" ref="Published" placeholder={newDate} defaultValue={newDate}/>
             <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue={newDate} />
@@ -79,9 +79,9 @@ export default class ArticleDetails extends TrackerReact(Component){
       )
     } else {
       let newDate = new Date();
-      return(
+      return (
         <div>
-          <form onSubmit={this.addArticle.bind(this)}>
+          <form onSubmit={this.addArticle.bind(this) }>
             <input type="text" id="Title" ref="Title" placeholder={article.title} defaultValue={article.title} />
             <input type="text" id="Published" ref="Published" placeholder={article.published} defaultValue ={article.published} />
             <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue ={newDate} />

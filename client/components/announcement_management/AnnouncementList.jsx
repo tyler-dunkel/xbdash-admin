@@ -29,7 +29,7 @@ export default class AnnouncementList extends TrackerReact(Component) {
         return (
             <div>
                 {this.getAllAnnouncements().map((announcement) => {
-                    return <AnnouncementSingle contest={announcement} />
+                    return <AnnouncementSingle announcement={announcement} />
                 }) }
             </div>
         )

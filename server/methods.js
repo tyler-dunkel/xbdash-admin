@@ -5,7 +5,7 @@ Meteor.methods({
             id = "";
         }
         xbdNews.update(
-            {_id: id},
+            { _id: id },
             {
                 "published": published,
                 "updated": new Date(),
@@ -27,7 +27,7 @@ Meteor.methods({
                 },
                 "shareCount": null
             },
-            {upsert: true}
+            { upsert: true }
         );
 
     },
@@ -37,7 +37,7 @@ Meteor.methods({
             id = "";
         }
         xbdContests.update(
-            {_id: id},
+            { _id: id },
             {
                 "status": status,
                 "contestToken": contestToken,
@@ -47,8 +47,26 @@ Meteor.methods({
                 "prizes": prizes,
                 "rules": rules
             },
-            {upsert: true}
+            { upsert: true }
         );
 
+    },
+
+    addAnnouncementServer(id, title, summary, image, link) {
+        if (id === 'new') {
+            id = "";
+        }
+        xbdAnnouncements.update(
+            { _id: id },
+            {
+                "title": title,
+                "summary": summary,
+                "image": image,
+                "link": link
+            },
+            { upsert: true }
+        )
     }
 });
+
+
