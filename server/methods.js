@@ -52,17 +52,18 @@ Meteor.methods({
 
     },
 
-    addAnnouncementServer(id, title, summary, image, link) {
+    addAnnouncementServer(id, title, summary, image, link, createdAt) {
         if (id === 'new') {
             id = "";
-        }
+        } 
         xbdAnnouncements.update(
             { _id: id },
             {
                 "title": title,
                 "summary": summary,
                 "image": image,
-                "link": link
+                "link": link,
+                "createdAt": createdAt
             },
             { upsert: true }
         )

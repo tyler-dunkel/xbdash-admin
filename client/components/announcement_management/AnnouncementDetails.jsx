@@ -30,8 +30,9 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
         let summary = this.refs.Summary.value.trim();
         let image = this.refs.Image.value.trim();
         let link = this.refs.Link.value.trim();
+        let createdAt = this.refs.CreatedAt.value.trim();
 
-        Meteor.call('addAnnouncementServer', id, title, summary, image, link, () => {
+        Meteor.call('addAnnouncementServer', id, title, summary, image, link, createdAt, () => {
             console.log("Announcement submitted");
             Materialize.toast('Announcement Submitted', 4000);
         })
@@ -45,6 +46,7 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
                 <div>Loading details...</div>
             )
         } if (!announcement && this.props.id == 'new') {
+            let createdAt = new Date();
             return (
                 <div>
                     <form onSubmit={this.addAnnouncement.bind(this) }>
@@ -52,6 +54,7 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
                         <input type="text" id="Summary" ref="Summary" placeholder="Summary" />
                         <input type="text" id="Image" ref="Image" placeholder="Image"/>
                         <input type="text" id="Link" ref="Link" placeholder="Link" />
+                        <input type="text" id="CreatedAt" ref="CreatedAt" placeholder={createdAt} defaultValue={createdAt} />
                         <button type="submit" className="btn waves-effect waves-light">Submit</button>
                     </form>
                 </div>
@@ -64,6 +67,7 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
                         <input type="text" id="Summary" ref="Summary" placeholder={announcement.summary} defaultValue={announcement.summary} />
                         <input type="text" id="Image" ref="Image" placeholder={announcement.image} defaultValue={announcement.image} />
                         <input type="text" id="Link" ref="Link" placeholder={announcement.image} defaultValue={announcement.image} />
+                        <input type="text" id="CreatedAt" ref="CreatedAt" placeholder={announcement.createdAt} defaultValue={announcement.createdAt} />
                         <button type="submit" className="btn waves-effect waves-light">Submit</button>
                     </form>
                 </div>
