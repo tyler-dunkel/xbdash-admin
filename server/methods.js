@@ -32,7 +32,7 @@ Meteor.methods({
         );
 
     },
-    
+
     //Adds contest to the database.
     addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules) {
         if (id === 'new') {
@@ -58,7 +58,7 @@ Meteor.methods({
     addAnnouncementServer(id, title, summary, image, link, createdAt) {
         if (id === 'new') {
             id = "";
-        } 
+        }
         xbdAnnouncements.update(
             { _id: id },
             {
@@ -73,22 +73,23 @@ Meteor.methods({
     },
 
     //This is used to check if the logged in user is allowed to access the page.
-    isUserAllowed(email){
+    isUserAllowed(email) {
+        console.log(email);
         var allowedEmails = [
-            'dylanrichardpearson@gmail.com',
+            'dylanrichardpearon@gmail.com',
             'tyler.dunkel@gmail.com'
-            ];
+        ];
         var isAllowed = false;
-        for (var i = 0; i < allowedEmails.length; i++){
-            if(allowedEmails[i] === email){
+        for (var i = 0; i < allowedEmails.length; i++) {
+            console.log("Email: " + email + " checked against " + allowedEmails[i]);
+            if (allowedEmails[i] === email) {
                 isAllowed = true;
                 break;
             }
         }
+        console.log(isAllowed);
         return isAllowed;
     }
-
-
 });
 
 
