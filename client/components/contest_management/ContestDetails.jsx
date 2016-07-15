@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class ContestDetails extends TrackerReact(Component) {
@@ -34,9 +34,9 @@ export default class ContestDetails extends TrackerReact(Component) {
     }
 
     getPrizesFormat(prizeArray) {
-      console.log("The prizeArray is logged below this line:");
-      console.log(prizeArray);
-      console.log(prizeArray[0]);
+        console.log("The prizeArray is logged below this line:");
+        console.log(prizeArray);
+        console.log(prizeArray[0]);
         var prizesFormatted = [];
         console.log("The prizeArray length is " + prizeArray.length);
         for (var i = 0; i < prizeArray.length; i++) {
@@ -44,7 +44,7 @@ export default class ContestDetails extends TrackerReact(Component) {
             console.log("var i is " + i);
             console.log(prize[i]);
             if (prize[0] != "") {
-                prizesFormatted[prizesFormatted.length] = {"title" : prize[0], "isPremium" : prize[1], "prizeImgUrl" : prize[2]};
+                prizesFormatted[prizesFormatted.length] = { "title": prize[0], "isPremium": prize[1], "prizeImgUrl": prize[2] };
             }
         }
         console.log(prizesFormatted);
@@ -54,9 +54,9 @@ export default class ContestDetails extends TrackerReact(Component) {
     getRulesFormat(ruleArray) {
         var rulesFormatted = [];
         console.log(ruleArray);
-        for (var i = 0; i < ruleArray.length; i++){
-            if(ruleArray[i]!=""){
-                rulesFormatted[rulesFormatted.length] = {"rule" : ruleArray[i]};
+        for (var i = 0; i < ruleArray.length; i++) {
+            if (ruleArray[i] != "") {
+                rulesFormatted[rulesFormatted.length] = { "rule": ruleArray[i] };
             }
         }
         return rulesFormatted;
@@ -72,11 +72,11 @@ export default class ContestDetails extends TrackerReact(Component) {
         let sendPrizeDate = this.refs.SendPrizeDate.value.trim();
         let status = this.refs.Status.value.trim();
         let prizes = this.getPrizesFormat([
-            [this.refs.PrizeTitle1.value.trim(), $( "#IsPremium1" ).val(), this.refs.PrizeImageUrl1.value.trim()],
-            [this.refs.PrizeTitle2.value.trim(), $( "#IsPremium2" ).val(), this.refs.PrizeImageUrl2.value.trim()],
-            [this.refs.PrizeTitle3.value.trim(), $( "#IsPremium3" ).val(), this.refs.PrizeImageUrl3.value.trim()],
-            [this.refs.PrizeTitle4.value.trim(), $( "#IsPremium4" ).val(), this.refs.PrizeImageUrl4.value.trim()],
-            [this.refs.PrizeTitle5.value.trim(), $( "#IsPremium5" ).val(), this.refs.PrizeImageUrl5.value.trim()]
+            [this.refs.PrizeTitle1.value.trim(), $("#IsPremium1").val(), this.refs.PrizeImageUrl1.value.trim()],
+            [this.refs.PrizeTitle2.value.trim(), $("#IsPremium2").val(), this.refs.PrizeImageUrl2.value.trim()],
+            [this.refs.PrizeTitle3.value.trim(), $("#IsPremium3").val(), this.refs.PrizeImageUrl3.value.trim()],
+            [this.refs.PrizeTitle4.value.trim(), $("#IsPremium4").val(), this.refs.PrizeImageUrl4.value.trim()],
+            [this.refs.PrizeTitle5.value.trim(), $("#IsPremium5").val(), this.refs.PrizeImageUrl5.value.trim()]
         ]);
         let rules = this.getRulesFormat([
             this.refs.Rule1.value.trim(),
@@ -85,9 +85,14 @@ export default class ContestDetails extends TrackerReact(Component) {
             this.refs.Rule4.value.trim(),
             this.refs.Rule5.value.trim()
         ]);
-        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules, ()=>{
-            console.log("Contest submitted");
-            Materialize.toast('Contest submitted', 4000);
+        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules, (error, result) => {
+            console.log(error);
+            console.log(result);
+            if (error) {
+                Materialize.toast('You are not authorized to submit a contest.');
+            } else if (result) {
+                Materialize.toast(result, 4000);
+            }
         })
     }
 
@@ -99,7 +104,7 @@ export default class ContestDetails extends TrackerReact(Component) {
         let contest = this.getContest();
         if (this.props.id === 'new') {
             return (
-                <form onSubmit={this.addContest.bind(this)}>
+                <form onSubmit={this.addContest.bind(this) }>
                     <div>
                         <div>
                             <label for="Title">Title</label>

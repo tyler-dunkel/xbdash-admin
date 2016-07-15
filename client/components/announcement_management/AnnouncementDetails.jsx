@@ -32,9 +32,14 @@ export default class AnnouncementDetails extends TrackerReact(Component) {
         let link = this.refs.Link.value.trim();
         let createdAt = this.refs.CreatedAt.value.trim();
 
-        Meteor.call('addAnnouncementServer', id, title, summary, image, link, createdAt, () => {
-            console.log("Announcement submitted");
-            Materialize.toast('Announcement Submitted', 4000);
+        Meteor.call('addAnnouncementServer', id, title, summary, image, link, createdAt, (error,result) => {
+            console.log(error);
+            console.log(result);
+            if (error) {
+                Materialize.toast('You are not authorized to submit a announcement.');
+            } else if (result) {
+                Materialize.toast(result, 4000);
+            }
         })
 
     }

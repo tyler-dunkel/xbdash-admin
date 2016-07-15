@@ -48,9 +48,14 @@ export default class ArticleDetails extends TrackerReact(Component) {
     let linkhref = this.refs.LinkHref.value.trim();
     let wysiwygHtml = $('#wysiwyg-editor').summernote('code');
     console.log(wysiwygHtml);
-    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, () => {
-      console.log("Article submitted");
-      Materialize.toast('Article submitted', 4000);
+    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, (error, result) => {
+      console.log(error);
+      console.log(result);
+      if (error) {
+        Materialize.toast('You are not authorized to submit a article.');
+      } else if (result) {
+        Materialize.toast(result, 4000);
+      }
     })
   }
 

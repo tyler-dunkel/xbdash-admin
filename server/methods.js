@@ -37,7 +37,7 @@ Meteor.methods({
             },
             { upsert: true }
         );
-
+        return "Article Submitted";
     },
 
     //Adds contest to the database.
@@ -62,7 +62,7 @@ Meteor.methods({
             },
             { upsert: true }
         );
-
+        return "Contest Submitted";
     },
 
     //Adds announcement to the database.
@@ -84,13 +84,14 @@ Meteor.methods({
             },
             { upsert: true }
         )
+        return "Announcement submitted";
     },
 
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
         console.log(email);
         var allowedEmails = [
-            'dylanrichardpearon@gmail.com',
+            'dylanrichardpearson@gmail.com',
             'tyler.dunkel@gmail.com'
         ];
         var isAllowed = false;
