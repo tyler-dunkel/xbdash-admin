@@ -1,7 +1,14 @@
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
+
 Meteor.methods({
 
     //Adds article to the database.
     addArticleServer(id, published, title, author, slug, source, linkhref, wysiwygHtml) {
+        if (!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
         if (id === 'new') {
             id = "";
         }
@@ -35,6 +42,10 @@ Meteor.methods({
 
     //Adds contest to the database.
     addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules) {
+
+        if (!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
         if (id === 'new') {
             id = "";
         }
@@ -56,6 +67,9 @@ Meteor.methods({
 
     //Adds announcement to the database.
     addAnnouncementServer(id, title, summary, image, link, createdAt) {
+        if (!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
         if (id === 'new') {
             id = "";
         }
