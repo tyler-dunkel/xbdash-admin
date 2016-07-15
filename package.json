@@ -10,7 +10,8 @@
     "jquery": "^3.0.0",
     "lodash": "^4.13.1",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.1.0",
+    "react": "^15.2.1",
+    "react-addons-pure-render-mixin": "^15.2.1",
     "react-dom": "^15.1.0",
     "react-edit-inline": "^1.0.7",
     "react-mounter": "^1.2.0"
