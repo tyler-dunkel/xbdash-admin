@@ -53,7 +53,7 @@ export default class Home extends TrackerReact(Component) {
         </div>
       )
     }
-    Meteor.user().emails[0].address
+    console.log(Meteor.user().emails[0].address);
     let username = Meteor.user().username;
     return (
       <div>
