@@ -5,7 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { ReactiveVar } from 'meteor/reactive-var'
 export default class Home extends TrackerReact(Component) {
 
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
@@ -54,13 +54,13 @@ export default class Home extends TrackerReact(Component) {
 
     let shouldAllow = Meteor.call('isUserAllowed', Meteor.user().emails[0].address, (error, result) => {
       console.log(result);
-      if(result === true){
+      if (result === true) {
         toggleUserAccess();
       }
       return result;
-    });    
+    });
 
-  
+
     if (this.state.allowed == null) {
       return (
         <div>
@@ -75,21 +75,18 @@ export default class Home extends TrackerReact(Component) {
       )
     }
 
-    if (this.state.allowed === true) {
-      console.log(Meteor.user().emails[0].address);
-      let username = Meteor.user().username;
-      return (
-        <div>
-          <div className="section no-pad-bot" id="index-banner">
-            <div className="container">
-              <h1 className="header center green-text">Hello, {username}</h1>
-              <div className="row center">
-              </div>
+    console.log(Meteor.user().emails[0].address);
+    let username = Meteor.user().username;
+    return (
+      <div>
+        <div className="section no-pad-bot" id="index-banner">
+          <div className="container">
+            <h1 className="header center green-text">Hello, {username}</h1>
+            <div className="row center">
             </div>
           </div>
         </div>
-      )
-    }
-
+      </div>
+    )
   }
 }
