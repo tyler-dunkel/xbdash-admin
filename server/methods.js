@@ -15,7 +15,7 @@ Meteor.methods({
         xbdNews.update(
             { _id: id },
             {
-                "published": published,
+                "published": new Date(published),
                 "updated": new Date(),
                 "title": title,
                 "content": wysiwygHtml,
@@ -54,9 +54,9 @@ Meteor.methods({
             {
                 "status": status,
                 "contestToken": contestToken,
-                "startDate": startDate,
-                "endDate": endDate,
-                "sendPrizeDate": sendPrizeDate,
+                "startDate": new Date(startDate),
+                "endDate": new Date(endDate),
+                "sendPrizeDate": new Date(sendPrizeDate),
                 "prizes": prizes,
                 "rules": rules
             },
@@ -80,7 +80,7 @@ Meteor.methods({
                 "summary": summary,
                 "image": image,
                 "link": link,
-                "createdAt": createdAt
+                "createdAt": new Date(createdAt)
             },
             { upsert: true }
         )
