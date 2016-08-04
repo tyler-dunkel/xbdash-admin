@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import SearchBar from 'react-search-bar';
+import FeaturedArea from './FeaturedArea.jsx';
 
 export default class Featured extends TrackerReact(Component) {
     onChange(input, resolve) {
-         const matches = {
+        const matches = {
             'macbook a': [
                 'macbook air 13 case',
                 'macbook air 11 case',
@@ -32,16 +33,19 @@ export default class Featured extends TrackerReact(Component) {
         console.info(`Searching "${input}"`);
     }
 
-    onSubmit(submitted){
+    onSubmit(submitted) {
         console.log(submitted);
     }
     render() {
         return (
-            <SearchBar
-                placeholder="Search for the new featured content"
-                onChange={this.onChange}
-                onSearch={this.onSearch}
-                onSubmit={this.onSubmit} />
+            <div>
+                <SearchBar
+                    placeholder="Search for the new featured content"
+                    onChange={this.onChange}
+                    onSearch={this.onSearch}
+                    onSubmit={this.onSubmit} />
+                <FeaturedArea />
+            </div>
         );
     }
 

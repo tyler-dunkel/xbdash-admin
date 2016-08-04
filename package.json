@@ -8,6 +8,8 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.11.4",
+    "classnames": "^2.2.5",
+    "es6-promise": "^3.2.1",
     "invariant": "^2.2.1",
     "jquery": "^3.0.0",
     "lodash": "^4.13.1",
