@@ -16,7 +16,6 @@ export default class Featured extends TrackerReact(Component) {
                 'macbook pro charger'
             ]
         };
-        // Simulate AJAX request
         setTimeout(() => {
             const suggestions = matches[Object.keys(matches).find((partial) => {
                 return input.match(new RegExp(partial), 'i');
@@ -39,9 +38,10 @@ export default class Featured extends TrackerReact(Component) {
     render() {
         return (
             <SearchBar
-                placeholder="search 'mac'"
+                placeholder="Search for the new featured content"
                 onChange={this.onChange}
-                onSearch={this.onSearch} />
+                onSearch={this.onSearch}
+                onSubmit={this.onSubmit} />
         );
     }
 
