@@ -16,12 +16,14 @@ export default class Nav extends Component {
               <li><a href="articletool">Articles</a></li>
               <li><a href="contesttool">Contests</a></li>
               <li><a href="announcementtool">Announcements</a></li>
+              <li><a href="featuredtool">Featured</a></li>
               <li><AccountsUI /></li>
             </ul>
             <ul className="side-nav" id="mobile">
               <li><a href="articletool">Articles</a></li>
               <li><a href="contesttool">Contests</a></li>
               <li><a href="announcementtool">Announcements</a></li>
+              <li><a href="featuredtool">Featured</a></li>
               <li><AccountsUI /></li>
             </ul>
           </div>
