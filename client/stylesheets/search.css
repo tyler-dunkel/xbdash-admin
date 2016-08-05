@@ -9,8 +9,8 @@ input {
 
 @media screen and (min-width: 640px) {
   .search-bar-wrapper {
-    min-width: 480px;
-    width: 40%;
+    min-width: 300px;
+    width: 70%;
   }
 }
 
