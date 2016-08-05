@@ -41,7 +41,7 @@ Meteor.methods({
     },
 
     //Adds contest to the database.
-    addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules) {
+    addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, type, data, prizes, rules) {
 
         if (!this.userId) {
             throw new Meteor.error('not-authorized');
@@ -57,6 +57,8 @@ Meteor.methods({
                 "startDate": new Date(startDate),
                 "endDate": new Date(endDate),
                 "sendPrizeDate": new Date(sendPrizeDate),
+                "type": type,
+                "data": data,
                 "prizes": prizes,
                 "rules": rules
             },

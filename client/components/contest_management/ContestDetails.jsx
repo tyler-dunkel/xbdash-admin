@@ -70,6 +70,8 @@ export default class ContestDetails extends TrackerReact(Component) {
         let startDate = this.refs.StartDate.value.trim();
         let endDate = this.refs.EndDate.value.trim();
         let sendPrizeDate = this.refs.SendPrizeDate.value.trim();
+        let type = this.refs.Type.value.trim();
+        let data = this.refs.Data.value.trim();
         let status = this.refs.Status.value.trim();
         let prizes = this.getPrizesFormat([
             [this.refs.PrizeTitle1.value.trim(), $("#IsPremium1").val(), this.refs.PrizeImageUrl1.value.trim()],
@@ -85,7 +87,7 @@ export default class ContestDetails extends TrackerReact(Component) {
             this.refs.Rule4.value.trim(),
             this.refs.Rule5.value.trim()
         ]);
-        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendPrizeDate, prizes, rules, (error, result) => {
+        Meteor.call('addContestServer', id, status, contestToken, startDate, endDate, sendPrizeDate, type, data, prizes, rules, (error, result) => {
             console.log(error);
             console.log(result);
             if (error) {
@@ -128,6 +130,20 @@ export default class ContestDetails extends TrackerReact(Component) {
                         </div>
                     </div>
                     <div>
+                        <label for="Type">Type</label>
+                        <select id="Type" ref="Type" defaultValue="referral">
+                            <option value="referral">referral</option>
+                            <option value="timeAttack">timeAttack</option>
+                            <option value="completeGame">completeGame</option>
+                            <option value="completeAchievement">completeAchievement</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="Data">Data</label>
+                        <input type="text" id="Data" ref="Data" className="validate"/>
+                    </div>
+                    <div>
+                        <label for="Status">Status</label>
                         <select id="Status" ref="Status" defaultValue="Active">
                             <option value="Active">Active</option>
                             <option value="Disabled">Disabled</option>
