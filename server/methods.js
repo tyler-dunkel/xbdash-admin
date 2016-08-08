@@ -87,6 +87,24 @@ Meteor.methods({
         return "Announcement submitted";
     },
 
+    //Adds featured content to the database.
+    addFeaturedContentServer(id, type, contentId) {
+        if(!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
+
+        xbdFeaturedContent.update(
+            { _id: id },
+            {
+                "type": type,
+                "contentId": contentId
+            },
+            { upsert: true }
+        )
+        
+        return "Featured content updated";
+    },
+
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
         console.log(email);

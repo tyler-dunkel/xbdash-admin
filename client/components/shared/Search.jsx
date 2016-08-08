@@ -39,7 +39,7 @@ export default class Featured extends TrackerReact(Component) {
         return (
             <div>
                 <SearchBar
-                    placeholder="Search for the new featured {this.props.type}"
+                    placeholder="Search for the new featured content"
                     onChange={this.onChange}
                     onSearch={this.onSearch}
                     onSubmit={this.onSubmit} />
