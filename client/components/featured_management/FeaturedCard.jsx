@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Search from '../shared/Search.jsx';
+import ArticleSearch from '../shared/ArticleSearch.jsx';
 
 export default class FeaturedCard extends Component {
     constructor() {
@@ -30,7 +31,7 @@ export default class FeaturedCard extends Component {
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
-                        <Search type={this.props.type}/>
+                        <ArticleSearch />
                     </div>
                 </div>
             )

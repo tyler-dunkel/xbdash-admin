@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {SearchSource} from 'meteor/meteorhacks:search-source';
 
 export default class ArticleSearch extends Component {
 
@@ -11,7 +12,7 @@ export default class ArticleSearch extends Component {
 
         this.fields = ['articleTitle', 'author'];
 
-        this.ArticleSearch = new SearchSource('articles', fields, options);
+        this.ArticleSearch = new SearchSource('articles', this.fields, this.options);
     }
 
     getArticles() {
@@ -27,6 +28,12 @@ export default class ArticleSearch extends Component {
         return this.ArticleSearch.getStatus().loading;
     }
 
+    handleChange(e) {
+            var text = $(e.target).val().trim();
+            this.ArticleSearch.search(text);
+            console.log(text);
+    }
+
 
 
     render() {
@@ -34,9 +41,12 @@ export default class ArticleSearch extends Component {
 
         return (
             <div>
-                {this.getArticles().map((article) => {
-                    return 
-                }) }
+                <input type="text" id="search-box" placeholder="search articles here" onKeyUp={this.handleChange} />
+                <div>
+                    {this.getArticles().map((article) => {
+                        <div>Result</div>
+                    }) }
+                </div>
             </div>
         )
     }
