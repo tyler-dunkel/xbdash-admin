@@ -7,7 +7,6 @@ export default class Home extends TrackerReact(Component) {
 
   constructor() {
     super();
-
     this.state = {
       allowed: false,
     };

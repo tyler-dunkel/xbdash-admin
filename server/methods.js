@@ -107,20 +107,20 @@ Meteor.methods({
 
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
-        console.log(email);
+        //console.log(email);
         var allowedEmails = [
             'dylanrichardpearson@gmail.com',
             'tyler.dunkel@gmail.com'
         ];
         var isAllowed = false;
         for (var i = 0; i < allowedEmails.length; i++) {
-            console.log("Email: " + email + " checked against " + allowedEmails[i]);
+            // console.log("Email: " + email + " checked against " + allowedEmails[i]);
             if (allowedEmails[i] === email) {
                 isAllowed = true;
                 break;
             }
         }
-        console.log(isAllowed);
+        // console.log(isAllowed);
         return isAllowed;
     }
 });
