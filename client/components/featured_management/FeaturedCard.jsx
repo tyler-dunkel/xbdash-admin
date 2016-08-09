@@ -18,7 +18,7 @@ export default class FeaturedCard extends Component {
         console.log(this.props.type);
         if (this.props.type === 'article') {
             return (
-                <div className="card medium">
+                <div className="card medium green darken-1 z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
                         <img className="activator" src="images/office.jpg" />
                     </div>
@@ -37,7 +37,7 @@ export default class FeaturedCard extends Component {
             )
         } else if (this.props.type === 'announcement') {
             return (
-                <div className="card medium">
+                <div className="card medium green darken-1 z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
                         <img className="activator" src="images/office.jpg" />
                     </div>
@@ -53,7 +53,7 @@ export default class FeaturedCard extends Component {
             )
         } else if (this.props.type === 'clip') {
             return (
-                <div className="card medium">
+                <div className="card medium green darken-1 z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
                         <img className="activator" src="images/office.jpg" />
                     </div>
@@ -69,7 +69,7 @@ export default class FeaturedCard extends Component {
             )
         } else if (this.props.type === 'image') {
             return (
-                <div className="card medium">
+                <div className="card medium green darken-1 z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
                         <img className="activator" src="images/office.jpg" />
                     </div>

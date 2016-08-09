@@ -10,7 +10,7 @@ export default class Nav extends Component {
       <header>
         <nav>
           <div className="nav-wrapper green">
-            <a href="/" className="brand-logo">XBdash Admin</a>
+            <a href="/" className="brand-logo"><img src="images/xbdash_whiteicon.png" height="55%" width="55%" /></a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               <li><a href="articletool">Articles</a></li>
