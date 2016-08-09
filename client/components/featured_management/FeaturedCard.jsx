@@ -20,17 +20,16 @@ export default class FeaturedCard extends Component {
             return (
                 <div className="card medium green darken-1 z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
-                        <img className="activator" src="images/office.jpg" />
                     </div>
                     <div className="card-content">
-                        <span className="card-title activator grey-text text-darken-4">{this.props.type}<i className="material-icons right">more_vert</i></span>
+                        <span className="card-title activator white-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
                         <ul>
                             <li>Title: </li>
                             <li>Author: </li>
                         </ul>
                     </div>
                     <div className="card-reveal">
-                        <span className="card-title grey-text text-darken-4">Update {this.props.type}<i className="material-icons right">close</i></span>
+                        <span className="card-title white-text">Update {this.props.type}<i className="material-icons right">close</i></span>
                         <Search type={this.props.type}/>
                     </div>
                 </div>
