@@ -4,12 +4,13 @@ SearchSource.defineSource('articles', function(searchText, options) {
   if(searchText) {
     var regExp = buildRegExp(searchText);
     var selector = {$or: [
-      {articleTitle: regExp},
+      {title: regExp},
       {author: regExp}
     ]};
-    
+    console.log(xbdNews.find(selector, options).fetch());
     return xbdNews.find(selector, options).fetch();
   } else {
+    console.log(xbdNews.find({}, options).fetch());
     return xbdNews.find({}, options).fetch();
   }
 });

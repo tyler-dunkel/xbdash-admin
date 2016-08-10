@@ -1,50 +1,49 @@
 import React, {Component} from 'react';
 import {SearchSource} from 'meteor/meteorhacks:search-source';
 
-export default class ArticleSearch extends Component {
+let options = {keepHistory: 1000 * 60 * 5, localSearch: true};
+let fields = ['articleTitle', 'author'];
+SearchArticles = new SearchSource('articles', this.fields, this.options);
 
+export default class ArticleSearch extends Component {
     constructor() {
         super();
-        this.options = {
-            keepHistory: 1000 * 60 * 5,
-            localSearch: true
-        };
 
-        this.fields = ['articleTitle', 'author'];
-
-        this.ArticleSearch = new SearchSource('articles', this.fields, this.options);
+        console.log(options);
+        console.log(fields);
+        console.log(SearchArticles);
     }
 
     getArticles() {
-        return this.ArticleSearch.getData({
-            transform: function (matchText, regExp) {
+        let articles = SearchArticles.getData({
+            transform(matchText, regExp) {
                 return matchText.replace(regExp, "<b>$&</b>")
             },
             sort: { isoScore: -1 }
         });
+        console.log(articles);
+        return articles;
     }
 
     isLoading() {
-        return this.ArticleSearch.getStatus().loading;
+        return SearchArticles.getStatus().loading;
     }
 
     handleChange(e) {
-            var text = $(e.target).val().trim();
-            this.ArticleSearch.search(text);
-            console.log(text);
+        console.log(fields);
+        console.log(options);
+        var text = $(e.target).val().trim();
+        console.log(text);
+        SearchArticles.search(text);
     }
 
-
-
     render() {
-
-
         return (
             <div>
                 <input type="text" id="search-box" placeholder="search articles here" onKeyUp={this.handleChange} />
                 <div>
                     {this.getArticles().map((article) => {
-                        <div>Result</div>
+                        return <div>Result</div>
                     }) }
                 </div>
             </div>
