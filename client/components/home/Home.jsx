@@ -10,7 +10,11 @@ export default class Home extends TrackerReact(Component) {
   constructor() {
     super();
     this.state = {
-      allowed: false
+      allowed: false,
+      subscription: {
+        numberOfUsers: Meteor.subscribe('userCount'),
+        numberOfUsersToday: Meteor.subscribe('userCountToday')
+      }
     };
   }
 
@@ -19,8 +23,16 @@ export default class Home extends TrackerReact(Component) {
       allowed: !this.state.allowed,
     });
   }
-
+  getUserCount(when) {
+    if (when === 'all') {
+      return Counts.get('user-count');
+    } else if (when === 'today') {
+      return Counts.get('user-count-today');
+    }
+  }
   render() {
+    let totalUserCount = this.getUserCount('all');
+    let todaysUserCount = this.getUserCount('today');
     if (!Meteor.user()) {
       return (
         <div>
@@ -86,7 +98,7 @@ export default class Home extends TrackerReact(Component) {
           </div>
         </div>
         <div className="row">
-          <UserWidget />
+          <UserWidget totalUserCount={this.getUserCount("all")} todaysUserCount={this.getUserCount("today")} />
         </div>
       </div>
     )
