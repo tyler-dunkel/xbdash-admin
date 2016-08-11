@@ -2,6 +2,7 @@ xbdNews = new Mongo.Collection("xbdnews");
 xbdContests = new Mongo.Collection("xbdcontests");
 xbdAnnouncements = new Mongo.Collection("xbdannouncements");
 xbdFeaturedContent = new Mongo.Collection("xbdfeaturedcontent");
+
 Meteor.publish("allxbdnews", function(){
   return xbdNews.find();
 });
@@ -16,4 +17,8 @@ Meteor.publish("allxbdannouncements", function(){
 
 Meteor.publish("allxbdfeaturedcontent", function(){
   return xbdFeaturedContent.find();
+});
+
+Meteor.publish('userCount', function() {
+  Counts.publish(this, 'user-count', Meteor.users.find());
 });

@@ -3,7 +3,6 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 Meteor.methods({
-
     //Adds article to the database.
     addArticleServer(id, published, title, author, slug, source, linkhref, wysiwygHtml) {
         if (!this.userId) {

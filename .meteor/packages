@@ -27,3 +27,5 @@ react-meteor-data
 meteorhacks:search-source
 check
 ejson
+useraccounts:flow-routing
+tmeasday:publish-counts

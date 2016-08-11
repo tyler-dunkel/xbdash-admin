@@ -3,13 +3,23 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ReactiveVar } from 'meteor/reactive-var'
+
 export default class Home extends TrackerReact(Component) {
 
   constructor() {
     super();
     this.state = {
       allowed: false,
+      subscription: {
+        numberOfUsers: Meteor.subscribe('userCount')
+      }
     };
+  }
+
+
+  getUserCount() {
+    console.log("user count is " + Counts.get('user-count'));
+    return Counts.get('user-count');
   }
 
   toggleUserAccess() {
@@ -19,9 +29,8 @@ export default class Home extends TrackerReact(Component) {
   }
 
   render() {
-    console.log(this.state.allowed + " Should undefined because this is the first log");
-    console.log(this.state.allowed);
-
+    console.log(this.getUserCount());
+    let userCount = this.getUserCount();
     if (!Meteor.user()) {
       return (
         <div>
@@ -78,12 +87,25 @@ export default class Home extends TrackerReact(Component) {
     let username = Meteor.user().username;
     return (
       <div>
-        <div className="section no-pad-bot" id="index-banner">
-          <div className="container">
-            <h1 className="header center green-text">Hello, {username}</h1>
-            <div className="row center">
+        <div className="row">
+          <div className="section no-pad-bot" id="index-banner">
+            <div className="container">
+              <h1 className="header center green-text">Hello, {username}</h1>
+              <div className="row center">
+              </div>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className="row">
+            <div className="col s4">
+              <div className="card-panel green">
+                <span className="white-text">{userCount} users!
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     )
