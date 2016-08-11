@@ -3,23 +3,15 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ReactiveVar } from 'meteor/reactive-var'
+import UserWidget from './UserWidget.jsx';
 
 export default class Home extends TrackerReact(Component) {
 
   constructor() {
     super();
     this.state = {
-      allowed: false,
-      subscription: {
-        numberOfUsers: Meteor.subscribe('userCount')
-      }
+      allowed: false
     };
-  }
-
-
-  getUserCount() {
-    console.log("user count is " + Counts.get('user-count'));
-    return Counts.get('user-count');
   }
 
   toggleUserAccess() {
@@ -29,8 +21,6 @@ export default class Home extends TrackerReact(Component) {
   }
 
   render() {
-    console.log(this.getUserCount());
-    let userCount = this.getUserCount();
     if (!Meteor.user()) {
       return (
         <div>
@@ -83,7 +73,6 @@ export default class Home extends TrackerReact(Component) {
       )
     }
 
-    console.log(Meteor.user().emails[0].address);
     let username = Meteor.user().username;
     return (
       <div>
@@ -97,15 +86,7 @@ export default class Home extends TrackerReact(Component) {
           </div>
         </div>
         <div className="row">
-          <div className="row">
-            <div className="col s4">
-              <div className="card-panel green">
-                <span className="white-text">{userCount} users!
-                </span>
-              </div>
-            </div>
-          </div>
-
+          <UserWidget />
         </div>
       </div>
     )
