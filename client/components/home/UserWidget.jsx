@@ -11,7 +11,7 @@ export default class UserWidget extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col s4">
+                <div className="col s6 m3">
                     <div className="card-panel white">
                         <span className="green-text flow-text">
                         <div className="center">
