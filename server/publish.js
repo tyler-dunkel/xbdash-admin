@@ -30,3 +30,7 @@ end.setHours(23,59,59,999);
 Meteor.publish('userCountToday', function() {
   Counts.publish(this, 'user-count-today', Meteor.users.find({createdAt: {$gte: start, $lt: end}}));
 });
+
+Meteor.publish('usersActiveToday', function() {
+  Counts.publish(this, 'users-active-today', Meteor.users.find({"status.lastLogin.date": {$gte: start, $lt: end}}))
+});
