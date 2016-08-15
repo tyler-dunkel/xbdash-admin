@@ -21,7 +21,9 @@ export default class UserWidget extends Component {
                             <br/>
                             Total: {this.props.totalUserCount}
                             <br/>
-                            Joined today: {this.props.todaysUserCount}
+                            Joined today: {this.props.usersJoinedToday}
+                            <br />
+                            Active today: {this.props.usersActiveToday}
                             </div>
                         </span>
                     </div>

@@ -13,7 +13,8 @@ export default class Home extends TrackerReact(Component) {
       allowed: false,
       subscription: {
         numberOfUsers: Meteor.subscribe('userCount'),
-        numberOfUsersToday: Meteor.subscribe('userCountToday')
+        numberOfUsersToday: Meteor.subscribe('userCountToday'),
+        numberofUsersActiveToday: Meteor.subscribe('usersActiveToday')
       }
     };
   }
@@ -28,11 +29,15 @@ export default class Home extends TrackerReact(Component) {
       return Counts.get('user-count');
     } else if (when === 'today') {
       return Counts.get('user-count-today');
+    } else if (when === 'activeToday') {
+      return Counts.get('users-active-today');
     }
   }
   render() {
     let totalUserCount = this.getUserCount('all');
     let todaysUserCount = this.getUserCount('today');
+    let todaysActiveUsers = this.getUserCount('activeToday');
+
     if (!Meteor.user()) {
       return (
         <div>
@@ -98,7 +103,7 @@ export default class Home extends TrackerReact(Component) {
           </div>
         </div>
         <div className="row">
-          <UserWidget totalUserCount={this.getUserCount("all")} todaysUserCount={this.getUserCount("today")} />
+          <UserWidget totalUserCount={this.getUserCount("all") } usersJoinedToday={this.getUserCount("today") } usersActiveToday={this.getUserCount("activeToday") } />
         </div>
       </div>
     )
