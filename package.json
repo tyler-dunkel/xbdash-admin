@@ -6,15 +6,22 @@
     "admin:prod": "MONGO_URL=mongodb://xbadmin:tda88f552e87k15g@capital.4.mongolayer.com:10130,capital.5.mongolayer.com:10130/xbdash-production?replicaSet=set-569077792b73d794a800039f meteor run --port 9999"
   },
   "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.11.4",
+    "classnames": "^2.2.5",
+    "es6-promise": "^3.2.1",
     "invariant": "^2.2.1",
     "jquery": "^3.0.0",
     "lodash": "^4.13.1",
+    "material-ui": "^0.15.3",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.2.1",
+    "react": "^15.3.0",
     "react-addons-pure-render-mixin": "^15.2.1",
-    "react-dom": "^15.1.0",
+    "react-dom": "^15.3.0",
     "react-edit-inline": "^1.0.7",
-    "react-mounter": "^1.2.0"
+    "react-mounter": "^1.2.0",
+    "react-search-bar": "^1.1.4",
+    "react-tap-event-plugin": "^1.0.0"
   },
   "version": "0.2.0",
   "main": "index.js",

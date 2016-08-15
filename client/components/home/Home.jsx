@@ -3,13 +3,18 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ReactiveVar } from 'meteor/reactive-var'
+import UserWidget from './UserWidget.jsx';
+
 export default class Home extends TrackerReact(Component) {
 
   constructor() {
     super();
-
     this.state = {
       allowed: false,
+      subscription: {
+        numberOfUsers: Meteor.subscribe('userCount'),
+        numberOfUsersToday: Meteor.subscribe('userCountToday')
+      }
     };
   }
 
@@ -18,11 +23,16 @@ export default class Home extends TrackerReact(Component) {
       allowed: !this.state.allowed,
     });
   }
-
+  getUserCount(when) {
+    if (when === 'all') {
+      return Counts.get('user-count');
+    } else if (when === 'today') {
+      return Counts.get('user-count-today');
+    }
+  }
   render() {
-    console.log(this.state.allowed + " Should undefined because this is the first log");
-    console.log(this.state.allowed);
-
+    let totalUserCount = this.getUserCount('all');
+    let todaysUserCount = this.getUserCount('today');
     if (!Meteor.user()) {
       return (
         <div>
@@ -75,16 +85,20 @@ export default class Home extends TrackerReact(Component) {
       )
     }
 
-    console.log(Meteor.user().emails[0].address);
     let username = Meteor.user().username;
     return (
       <div>
-        <div className="section no-pad-bot" id="index-banner">
-          <div className="container">
-            <h1 className="header center green-text">Hello, {username}</h1>
-            <div className="row center">
+        <div className="row">
+          <div className="section no-pad-bot" id="index-banner">
+            <div className="container">
+              <h1 className="header center green-text">Hello, {username}</h1>
+              <div className="row center">
+              </div>
             </div>
           </div>
+        </div>
+        <div className="row">
+          <UserWidget totalUserCount={this.getUserCount("all")} todaysUserCount={this.getUserCount("today")} />
         </div>
       </div>
     )

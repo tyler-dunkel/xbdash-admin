@@ -3,7 +3,6 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 Meteor.methods({
-
     //Adds article to the database.
     addArticleServer(id, published, title, author, slug, source, linkhref, wysiwygHtml) {
         if (!this.userId) {
@@ -89,22 +88,40 @@ Meteor.methods({
         return "Announcement submitted";
     },
 
+    //Adds featured content to the database.
+    addFeaturedContentServer(id, type, contentId) {
+        if(!this.userId) {
+            throw new Meteor.error('not-authorized');
+        }
+
+        xbdFeaturedContent.update(
+            { _id: id },
+            {
+                "type": type,
+                "contentId": contentId
+            },
+            { upsert: true }
+        )
+        
+        return "Featured content updated";
+    },
+
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
-        console.log(email);
+        //console.log(email);
         var allowedEmails = [
             'dylanrichardpearson@gmail.com',
             'tyler.dunkel@gmail.com'
         ];
         var isAllowed = false;
         for (var i = 0; i < allowedEmails.length; i++) {
-            console.log("Email: " + email + " checked against " + allowedEmails[i]);
+            // console.log("Email: " + email + " checked against " + allowedEmails[i]);
             if (allowedEmails[i] === email) {
                 isAllowed = true;
                 break;
             }
         }
-        console.log(isAllowed);
+        // console.log(isAllowed);
         return isAllowed;
     }
 });

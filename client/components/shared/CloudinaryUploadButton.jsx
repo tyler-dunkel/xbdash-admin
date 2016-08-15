@@ -15,7 +15,7 @@ export default class CloudinaryUploadButton extends Component{
 }
   render(){
     return(
-      <a href="#" id="upload_widget_opener" className="waves-effect waves-light btn">Cloudinary Upload</a>
+      <a href="#" id="upload_widget_opener" className="waves-effect waves-light btn white green-text">Cloudinary Upload</a>
     )
   }
 }
