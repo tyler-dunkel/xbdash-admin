@@ -20,3 +20,4 @@ function buildRegExp(searchText) {
   //return new RegExp("(" + parts.join('|') + ")", "ig");
   return new RegExp(searchText, "ig");
 }
+

@@ -106,6 +106,7 @@ Meteor.methods({
         return "Featured content updated";
     },
 
+    //THIS DOES NOT WORK! (YET)
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
         //console.log(email);
