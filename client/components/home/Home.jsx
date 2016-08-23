@@ -94,15 +94,6 @@ export default class Home extends TrackerReact(Component) {
     return (
       <div>
         <div className="row">
-          <div className="section no-pad-bot" id="index-banner">
-            <div className="container">
-              <h1 className="header center green-text">Hello, {username}</h1>
-              <div className="row center">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
           <UserWidget totalUserCount={this.getUserCount("all") } usersJoinedToday={this.getUserCount("today") } usersActiveToday={this.getUserCount("activeToday") } />
         </div>
       </div>

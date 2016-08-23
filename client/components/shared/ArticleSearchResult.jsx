@@ -4,7 +4,7 @@ export default class ArticleSearchResult extends Component {
 
     render() {
         return (
-            <a href="#" className="collection-item avatar">
+            <a href="#" onClick="{this.props.onArticleClick}" className="collection-item avatar">
                 <i className="material-icons circle green">subject</i>
                 <span className="title">{this.props.article.title}</span>
                 <p>{this.props.article.author}</p>

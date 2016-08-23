@@ -59,7 +59,7 @@ export default class ArticleSearch extends TrackerReact(Component) {
                     {console.log("articles " + this.getArticles()) }
                     <div className="collection">
                         {this.getArticles().map((article) => {
-                            return <ArticleSearchResult onClick={this.updateFeatured(article._id)} article={article} />
+                            return <ArticleSearchResult onArticleClick={this.updateFeatured(article._id)} article={article} />
                         }) }
                     </div>
                 </div>

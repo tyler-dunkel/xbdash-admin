@@ -3,18 +3,6 @@ import Search from '../shared/Search.jsx';
 import ArticleSearch from '../shared/ArticleSearch.jsx';
 
 export default class FeaturedCard extends Component {
-    constructor() {
-        super();
-        this.state = {
-            subscription: {
-                xbdNews: Meteor.subscribe("allxbdnews"),
-                xbdContests: Meteor.subscribe("allxbdcontests"),
-                xbdAnnouncements: Meteor.subscribe("allxbdannouncements"),
-                xbdFeaturedContent: Meteor.subscribe("allxbdfeaturedcontent")
-            }
-        }
-    }
-
     render() {
         console.log(this.props.type);
         if (this.props.type === 'article') {
