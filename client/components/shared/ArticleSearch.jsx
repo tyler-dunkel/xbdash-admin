@@ -26,20 +26,6 @@ export default class ArticleSearch extends TrackerReact(Component) {
         var text = $(e.target).val().trim();
         SearchArticles.search(text, options);
     }
-
-
-    updateFeatured(articleId) {
-        console.log(articleId);
-         Meteor.call('addFeaturedContentServer', 1, "article", articleId, (error, result) => {
-            console.log(error);
-            console.log(result);
-            if (error) {
-                Materialize.toast('You are not authorized to update the featured article.');
-            } else if (result) {
-                Materialize.toast(result, 4000);
-            }
-        })
-    }
     
     render() {
         if (this.isLoading().loaded != true) {
@@ -56,10 +42,9 @@ export default class ArticleSearch extends TrackerReact(Component) {
             <div>
                 <input type="text" id="search-box" placeholder="search articles here" onKeyUp={this.handleChange} />
                 <div>
-                    {console.log("articles " + this.getArticles()) }
                     <div className="collection">
                         {this.getArticles().map((article) => {
-                            return <ArticleSearchResult onArticleClick={this.updateFeatured(article._id)} article={article} />
+                            return <ArticleSearchResult article={article} />
                         }) }
                     </div>
                 </div>
