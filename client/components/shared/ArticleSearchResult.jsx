@@ -18,7 +18,7 @@ export default class ArticleSearchResult extends Component {
     render() {
         return (
             <div className="collection-item avatar">
-                <a href="#" onClick={this.updateFeatured(this.props.article._id)}>
+                <a href="#" onClick={this.updateFeatured.bind(this, this.props.article._id)}>
                     <i className="material-icons circle green">subject</i>
                     <span className="title">{this.props.article.title}</span>
                     <p>{this.props.article.author}</p>
