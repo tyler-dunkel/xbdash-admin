@@ -4,7 +4,7 @@ export default class ArticleSearchResult extends Component {
 
     updateFeatured(articleId) {
         console.log(articleId);
-        Meteor.call('addFeaturedContentServer', 1, "article", this.props.article.articleId, (error, result) => {
+        Meteor.call('addFeaturedContentServer', 1, "article", articleId, (error, result) => {
             console.log(error);
             console.log(result);
             if (error) {
