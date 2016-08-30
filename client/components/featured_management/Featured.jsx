@@ -22,7 +22,12 @@ export default class Featured extends TrackerReact(Component) {
         this.state.subscription.xbdFeaturedContent.stop();
     }
 
+    testFeatured(){
+        console.log(xbdFeaturedContent.find().fetch());
+    }
+
     render() {
+        this.testFeatured();
         return (
             <div>
                 <FeaturedArea />

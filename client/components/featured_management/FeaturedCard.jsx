@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Search from '../shared/Search.jsx';
 import ArticleSearch from '../shared/ArticleSearch.jsx';
 
 export default class FeaturedCard extends Component {
