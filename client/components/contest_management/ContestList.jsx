@@ -3,8 +3,6 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import ContestSingle from './ContestSingle.jsx';
 
-xbdContests = new Mongo.Collection("xbdcontests");
-
 export default class ContestList extends TrackerReact(Component) {
 
   constructor() {

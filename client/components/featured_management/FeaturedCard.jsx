@@ -34,7 +34,6 @@ export default class FeaturedCard extends Component {
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
-                        <Search type={this.props.type}/>
                     </div>
                 </div>
             )
@@ -50,7 +49,6 @@ export default class FeaturedCard extends Component {
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
-                        <Search type={this.props.type}/>
                     </div>
                 </div>
             )
@@ -66,7 +64,6 @@ export default class FeaturedCard extends Component {
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
-                        <Search type={this.props.type}/>
                     </div>
                 </div>
             )

@@ -2,8 +2,6 @@ import React,{Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import AnnouncementSingle from './AnnouncementSingle.jsx';
 
-xbdAnnouncements = new Mongo.Collection("xbdannouncements");
-
 export default class AnnouncementList extends TrackerReact(Component) {
     constructor() {
         super();
