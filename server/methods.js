@@ -41,7 +41,6 @@ Meteor.methods({
 
     //Adds contest to the database.
     addContestServer(id, status, contestToken, startDate, endDate, sendPrizeDate, type, data, prizes, rules) {
-
         if (!this.userId) {
             throw new Meteor.error('not-authorized');
         }
@@ -93,6 +92,13 @@ Meteor.methods({
         if(!this.userId) {
             throw new Meteor.error('not-authorized');
         }
+        // xbdFeaturedContent.update(
+        //     {
+        //         type: type, 
+        //         contentId: contentId
+        //     },
+        //     { upsert: true }
+        //     );
 
         xbdFeaturedContent.update(
             { _id: id },
@@ -106,6 +112,7 @@ Meteor.methods({
         return "Featured content updated";
     },
 
+    //THIS DOES NOT WORK! (YET)
     //This is used to check if the logged in user is allowed to access the page.
     isUserAllowed(email) {
         //console.log(email);

@@ -3,8 +3,6 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import ArticleSingle from './ArticleSingle.jsx';
 
-xbdNews = new Mongo.Collection("xbdnews");
-
 export default class ArticleList extends TrackerReact(Component) {
 
   constructor(){

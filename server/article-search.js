@@ -7,16 +7,17 @@ SearchSource.defineSource('articles', function(searchText, options) {
       {title: regExp},
       {author: regExp}
     ]};
-    console.log(xbdNews.find(selector, options).fetch());
+    //console.log(xbdNews.find(selector, options).fetch());
     return xbdNews.find(selector, options).fetch();
   } else {
-    console.log(xbdNews.find({}, options).fetch());
+    //console.log(xbdNews.find({}, options).fetch());
     return xbdNews.find({}, options).fetch();
   }
 });
 
 function buildRegExp(searchText) {
-  // this is a dumb implementation
-  var parts = searchText.trim().split(/[ \-\:]+/);
-  return new RegExp("(" + parts.join('|') + ")", "ig");
+  //var parts = searchText.trim().split(/[ \-\:]+/);
+  //return new RegExp("(" + parts.join('|') + ")", "ig");
+  return new RegExp(searchText, "ig");
 }
+

@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {SearchSource} from 'meteor/meteorhacks:search-source';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import ArticleSearchResult from './ArticleSearchResult.jsx';
 
 let options = { keepHistory: 1000 * 60 * 5, localSearch: true };
 let fields = ['articleTitle', 'author'];
-SearchArticles = new SearchSource('articles', this.fields, this.options);
+SearchArticles = new SearchSource('articles', fields, options);
 
-export default class ArticleSearch extends Component {
+export default class ArticleSearch extends TrackerReact(Component) {
+
     getArticles() {
         return SearchArticles.getData({
             transform(matchText, regExp) {
@@ -21,12 +24,11 @@ export default class ArticleSearch extends Component {
 
     handleChange(e) {
         var text = $(e.target).val().trim();
-        SearchArticles.search(text);
+        SearchArticles.search(text, options);
     }
-
+    
     render() {
-        console.log(this.isLoading().loaded);
-        if (this.isLoading().loaded!=true) {
+        if (this.isLoading().loaded != true) {
             return (
                 <div>
                     <input type="text" id="search-box" placeholder="search articles here" onKeyUp={this.handleChange} />
@@ -40,9 +42,11 @@ export default class ArticleSearch extends Component {
             <div>
                 <input type="text" id="search-box" placeholder="search articles here" onKeyUp={this.handleChange} />
                 <div>
-                    {this.getArticles().map((article) => {
-                        return <div>Result</div>
-                    }) }
+                    <div className="collection">
+                        {this.getArticles().map((article) => {
+                            return <ArticleSearchResult article={article} />
+                        }) }
+                    </div>
                 </div>
             </div>
         )
