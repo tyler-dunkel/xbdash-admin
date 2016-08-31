@@ -92,13 +92,6 @@ Meteor.methods({
         if(!this.userId) {
             throw new Meteor.error('not-authorized');
         }
-        // xbdFeaturedContent.update(
-        //     {
-        //         type: type, 
-        //         contentId: contentId
-        //     },
-        //     { upsert: true }
-        //     );
 
         xbdFeaturedContent.update(
             { _id: id },

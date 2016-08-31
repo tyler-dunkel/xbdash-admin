@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ArticleSearch from '../shared/ArticleSearch.jsx';
+import ContestSearch from '../shared/ContestSearch.jsx';
 
 export default class FeaturedCard extends Component {
     render() {
@@ -22,18 +23,21 @@ export default class FeaturedCard extends Component {
                     </div>
                 </div>
             )
-        } else if (this.props.type === 'announcement') {
+        } else if (this.props.type === 'contest') {
             return (
                 <div className="card medium white z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
-                        <img className="activator" src="images/office.jpg" />
                     </div>
                     <div className="card-content">
                         <span className="card-title activator green-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <ul>
+                            <li>Title: </li>
+                            <li>Type: </li>
+                        </ul>
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
+                        <ContestSearch />
                     </div>
                 </div>
             )
