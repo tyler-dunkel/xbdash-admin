@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 export default class ArticleSearchResult extends Component {
 
     updateFeatured(articleId) {
-        console.log(articleId);
         Meteor.call('addFeaturedContentServer', 1, "article", articleId, (error, result) => {
             console.log(error);
             console.log(result);

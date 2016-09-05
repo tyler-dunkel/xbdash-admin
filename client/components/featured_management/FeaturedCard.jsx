@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import ArticleSearch from '../shared/ArticleSearch.jsx';
-import ContestSearch from '../shared/ContestSearch.jsx';
+import ArticleSearch from './ArticleSearch.jsx';
+import ContestSearch from './ContestSearch.jsx';
+import ClipUrl from './ClipUrl.jsx';
+import ImageUrl from './ImageUrl.jsx';
 
 export default class FeaturedCard extends Component {
     render() {
-        console.log(this.props.type);
         if (this.props.type === 'article') {
             return (
                 <div className="card medium white z-depth-4">
@@ -13,7 +14,7 @@ export default class FeaturedCard extends Component {
                     <div className="card-content">
                         <span className="card-title activator green-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
                         <ul>
-                            <li>Title: </li>
+                            <li>Article Title: </li>
                             <li>Author: </li>
                         </ul>
                     </div>
@@ -31,7 +32,7 @@ export default class FeaturedCard extends Component {
                     <div className="card-content">
                         <span className="card-title activator green-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
                         <ul>
-                            <li>Title: </li>
+                            <li>Contest Title: </li>
                             <li>Type: </li>
                         </ul>
                     </div>
@@ -45,14 +46,16 @@ export default class FeaturedCard extends Component {
             return (
                 <div className="card medium white z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
-                        <img className="activator" src="images/office.jpg" />
                     </div>
                     <div className="card-content">
                         <span className="card-title activator green-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <ul>
+                            <li>Clip link: </li>
+                        </ul>
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
+                        <ClipUrl />
                     </div>
                 </div>
             )
@@ -60,14 +63,16 @@ export default class FeaturedCard extends Component {
             return (
                 <div className="card medium white z-depth-4">
                     <div className="card-image waves-effect waves-block waves-light">
-                        <img className="activator" src="images/office.jpg" />
                     </div>
                     <div className="card-content">
                         <span className="card-title activator green-text">{this.props.type}<i className="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <ul>
+                            <li><img src="" /></li>
+                        </ul>
                     </div>
                     <div className="card-reveal">
                         <span className="card-title green-text">Update {this.props.type}<i className="material-icons right">close</i></span>
+                        <ImageUrl />
                     </div>
                 </div>
             )
