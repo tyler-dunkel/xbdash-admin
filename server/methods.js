@@ -89,16 +89,9 @@ Meteor.methods({
 
     //Adds featured content to the database.
     addFeaturedContentServer(id, type, contentId) {
-        if(!this.userId) {
+        if (!this.userId) {
             throw new Meteor.error('not-authorized');
         }
-        // xbdFeaturedContent.update(
-        //     {
-        //         type: type, 
-        //         contentId: contentId
-        //     },
-        //     { upsert: true }
-        //     );
 
         xbdFeaturedContent.update(
             { _id: id },
@@ -108,7 +101,7 @@ Meteor.methods({
             },
             { upsert: true }
         )
-        
+
         return "Featured content updated";
     },
 
@@ -130,6 +123,27 @@ Meteor.methods({
         }
         // console.log(isAllowed);
         return isAllowed;
+    },
+
+
+    getFeaturedArticle() {
+        var articleId = xbdFeaturedContent.find({ _id: 1 }).fetch()[0].contentId;
+        return xbdNews.find({ _id: articleId }).fetch();
+    },
+
+    getFeaturedContest() {
+        var contestId = xbdFeaturedContent.find({ _id: 2 }).fetch()[0].contentId;
+        return xbdContests.find({ _id: contestId }).fetch();
+    },
+
+    getFeaturedClip() {
+        var clipUrl = xbdFeaturedContent.find({ _id: 3 }).fetch()[0].contentId;
+        return clipUrl;
+    },
+
+    getFeaturedImage() {
+        var imageUrl = xbdFeaturedContent.find({_id: 4}).fetch()[0].contentId;
+        return imageUrl;    
     }
 });
 

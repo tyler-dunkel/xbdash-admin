@@ -7,7 +7,7 @@ export default class FeaturedArea extends Component {
             <div>
                 <div className="row">
                     <div className="col s6"><FeaturedCard type="article"/></div>
-                    <div className="col s6"><FeaturedCard type="announcement"/></div>
+                    <div className="col s6"><FeaturedCard type="contest"/></div>
                 </div>
                 <div className="row">
                     <div className="col s6"><FeaturedCard type="clip"/></div>

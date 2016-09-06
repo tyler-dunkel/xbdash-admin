@@ -1,11 +1,11 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import ArticleSingle from './ArticleSingle.jsx';
 
 export default class ArticleList extends TrackerReact(Component) {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       subscription: {
@@ -14,26 +14,28 @@ export default class ArticleList extends TrackerReact(Component) {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.subscription.xbdNews.stop();
   }
 
-  getAllArticles(){
-    return xbdNews.find({ "source": "xbdash" }, { sort: { "published": -1 }}).fetch();
+  getAllArticles() {
+    return xbdNews.find({ "source": "xbdash" }, { sort: { "published": -1 } }).fetch();
   }
 
   render() {
-    if(!this.getAllArticles()){
+    if (!this.getAllArticles()) {
       console.log("Loading Articles");
-      return(
-        <div>Loading...</div>
+      return (
+        <div className="progress">
+          <div className="indeterminate"></div>
+        </div>
       )
     }
     return (
       <div>
-        {this.getAllArticles().map( (article)=>{
+        {this.getAllArticles().map((article) => {
           return <ArticleSingle article={article} />
-        })}
+        }) }
       </div>
     )
   }

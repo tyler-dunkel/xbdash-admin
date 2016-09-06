@@ -23,12 +23,10 @@ export default class WysiwygEditor extends TrackerReact(Component) {
   componentDidMount() {
     if(this.props.id!='new'){
       let article = this.getArticle();
-      console.log("Editor component to edit article mounted.");
       $(document).ready(function() {
         $('#wysiwyg-editor').summernote('code', article.content);
       });
     } else {
-      console.log("Editor component for new article mounted.");
       $(document).ready(function() {
         $('#wysiwyg-editor').summernote();
       });
@@ -38,9 +36,7 @@ export default class WysiwygEditor extends TrackerReact(Component) {
 
     render() {
       let article = this.getArticle();
-      console.log(article);
       if(!article && this.props.id!='new'){
-        console.log("Loading editor");
         return(<div className="row">Loading Editor...</div>)
       }
 
