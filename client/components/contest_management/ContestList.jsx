@@ -26,7 +26,9 @@ export default class ContestList extends TrackerReact(Component) {
     if (!this.getAllContests()) {
       console.log("Loading Contests...");
       return (
-        <div>Loading...</div>
+        <div className="progress">
+          <div className="indeterminate"></div>
+        </div>
       )
     }
     return (
