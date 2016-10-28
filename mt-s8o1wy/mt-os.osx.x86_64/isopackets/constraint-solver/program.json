@@ -1,0 +1,42 @@
+{
+  "format": "javascript-image-pre1",
+  "arch": "os",
+  "load": [
+    {
+      "path": "packages/underscore.js"
+    },
+    {
+      "node_modules": "npm/node_modules/meteor/meteor/node_modules",
+      "path": "packages/meteor.js"
+    },
+    {
+      "node_modules": "npm/node_modules/meteor/modules-runtime/node_modules",
+      "path": "packages/modules-runtime.js"
+    },
+    {
+      "node_modules": "npm/node_modules/meteor/modules/node_modules",
+      "path": "packages/modules.js"
+    },
+    {
+      "path": "packages/base64.js"
+    },
+    {
+      "path": "packages/ejson.js"
+    },
+    {
+      "path": "packages/check.js"
+    },
+    {
+      "path": "packages/package-version-parser.js"
+    },
+    {
+      "path": "packages/logic-solver.js"
+    },
+    {
+      "path": "packages/constraint-solver.js"
+    },
+    {
+      "path": "packages/isopacket-constraint-solver_plugin.js"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { check } from 'meteor/check';
 
 Meteor.methods({
     //Adds article to the database.
-    addArticleServer(id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, wysiwygHtml) {
+    addArticleServer(id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, shareImage, wysiwygHtml) {
         var gameId = gameId.split(",");
 
         if (!this.userId) {
@@ -31,7 +31,8 @@ Meteor.methods({
                 "shareCount": null,
                 "type": type,
                 "gameId": gameId,
-                "featuredImage": featuredImage
+                "featuredImage": featuredImage,
+                "shareImage": shareImage
             },
             { upsert: true }
         );

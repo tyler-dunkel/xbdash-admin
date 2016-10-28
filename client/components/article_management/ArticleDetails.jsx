@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import WysiwygEditor from '../shared/WysiwygEditor.jsx';
 
@@ -49,9 +49,10 @@ export default class ArticleDetails extends TrackerReact(Component) {
     let type = this.refs.Type.value.trim();
     let gameId = this.refs.GameId.value.trim();
     let featuredImage = this.refs.FeaturedImage.value.trim();
+    let shareImage = this.refs.ShareImage.value.trim();
     let wysiwygHtml = $('#wysiwyg-editor').summernote('code');
 
-    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, wysiwygHtml, (error, result) => {
+    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, shareImage, wysiwygHtml, (error, result) => {
       console.log(error);
       console.log(result);
       if (error) {
@@ -72,9 +73,9 @@ export default class ArticleDetails extends TrackerReact(Component) {
       let newDate = new Date();
       return (
         <div>
-          <form onSubmit={this.addArticle.bind(this) }>
+          <form onSubmit={this.addArticle.bind(this)}>
             <input type="text" id="Title" ref="Title" placeholder="Title" />
-            <input type="text" id="Published" ref="Published" placeholder={newDate} defaultValue={newDate}/>
+            <input type="text" id="Published" ref="Published" placeholder={newDate} defaultValue={newDate} />
             <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue={newDate} />
             <input type="text" id="Author" ref="Author" placeholder="Author" />
             <input type="text" id="Slug" ref="Slug" placeholder="Slug" />
@@ -83,7 +84,8 @@ export default class ArticleDetails extends TrackerReact(Component) {
             <input type="text" id="Type" ref="Type" placeholder="Type" />
             <input type="text" id="GameId" ref="GameId" placeholder="When entering GameId use commas to separate each one. I.E hello,test,hey" />
             <input type="text" id="FeaturedImage" ref="FeaturedImage" placeholder="Featured Image" />
-            <WysiwygEditor id={this.props.id}/>
+            <input type="text" id="ShareImage" ref="ShareImage" placeholder="Share Image" />
+            <WysiwygEditor id={this.props.id} />
             <button type="submit" className="btn waves-effect waves-light">Submit</button>
           </form>
         </div>
@@ -92,18 +94,19 @@ export default class ArticleDetails extends TrackerReact(Component) {
       let newDate = new Date();
       return (
         <div>
-          <form onSubmit={this.addArticle.bind(this) }>
+          <form onSubmit={this.addArticle.bind(this)}>
             <input type="text" id="Title" ref="Title" placeholder={article.title} defaultValue={article.title} />
-            <input type="text" id="Published" ref="Published" placeholder={article.published} defaultValue ={article.published} />
-            <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue ={newDate} />
-            <input type="text" id="Author" ref="Author" placeholder={article.author} defaultValue ={article.author} />
-            <input type="text" id="Slug" ref="Slug" placeholder={article.slug} defaultValue ={article.slug} />
-            <input type="text" id="Source" ref="Source" placeholder={article.source} defaultValue ={article.source} />
-            <input type="text" id="LinkHref" ref="LinkHref" placeholder={article.link.href} defaultValue ={article.link.href} />
+            <input type="text" id="Published" ref="Published" placeholder={article.published} defaultValue={article.published} />
+            <input type="text" id="Updated" ref="Updated" placeholder={newDate} defaultValue={newDate} />
+            <input type="text" id="Author" ref="Author" placeholder={article.author} defaultValue={article.author} />
+            <input type="text" id="Slug" ref="Slug" placeholder={article.slug} defaultValue={article.slug} />
+            <input type="text" id="Source" ref="Source" placeholder={article.source} defaultValue={article.source} />
+            <input type="text" id="LinkHref" ref="LinkHref" placeholder={article.link.href} defaultValue={article.link.href} />
             <input type="text" id="Type" ref="Type" placeholder={article.type} defaultValue={article.type} />
-            <input type="text" id="GameId" ref="GameId"  placeholder={article.gameId} defaultValue={article.gameId} />
+            <input type="text" id="GameId" ref="GameId" placeholder={article.gameId} defaultValue={article.gameId} />
             <input type="text" id="FeaturedImage" ref="FeaturedImage" placeholder={article.featuredImage} defaultValue={article.featuredImage} />
-            <WysiwygEditor id={this.props.id}/>
+            <input type="text" id="ShareImage" ref="ShareImage" placeholder={article.shareImage} defaultValue={article.shareImage} />
+            <WysiwygEditor id={this.props.id} />
             <button type="submit" className="btn waves-effect waves-light">Submit</button>
           </form>
         </div>

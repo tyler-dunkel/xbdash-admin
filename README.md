@@ -1,10 +1,10 @@
 # README #
 
-This is the XBdash.com Admin application.
+XBdash.com Admin application.
 
 ### Master Branch Details ###
 
-* Version: 0.1.0
+* Version: 1.0.0
 
 ### How do I get set up? ###
 
