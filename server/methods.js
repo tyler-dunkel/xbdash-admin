@@ -4,7 +4,9 @@ import { check } from 'meteor/check';
 
 Meteor.methods({
     //Adds article to the database.
-    addArticleServer(id, published, title, author, slug, source, linkhref, wysiwygHtml) {
+    addArticleServer(id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, wysiwygHtml) {
+        var gameId = gameId.split(",");
+
         if (!this.userId) {
             throw new Meteor.error('not-authorized');
         }
@@ -23,16 +25,13 @@ Meteor.methods({
                     "type": "text/html",
                     "href": linkhref
                 },
-                "id": [
-                    ""
-                ],
                 "author": author,
                 "slug": slug,
                 "source": source,
-                "contentType": {
-                    "type": "html"
-                },
-                "shareCount": null
+                "shareCount": null,
+                "type": type,
+                "gameId": gameId,
+                "featuredImage": featuredImage
             },
             { upsert: true }
         );

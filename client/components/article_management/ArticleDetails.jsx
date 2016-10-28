@@ -46,9 +46,12 @@ export default class ArticleDetails extends TrackerReact(Component) {
     let slug = this.refs.Slug.value.trim();
     let source = this.refs.Source.value.trim();
     let linkhref = this.refs.LinkHref.value.trim();
+    let type = this.refs.Type.value.trim();
+    let gameId = this.refs.GameId.value.trim();
+    let featuredImage = this.refs.FeaturedImage.value.trim();
     let wysiwygHtml = $('#wysiwyg-editor').summernote('code');
-    console.log(wysiwygHtml);
-    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, wysiwygHtml, (error, result) => {
+
+    Meteor.call('addArticleServer', id, published, title, author, slug, source, linkhref, type, gameId, featuredImage, wysiwygHtml, (error, result) => {
       console.log(error);
       console.log(result);
       if (error) {
@@ -77,6 +80,9 @@ export default class ArticleDetails extends TrackerReact(Component) {
             <input type="text" id="Slug" ref="Slug" placeholder="Slug" />
             <input type="text" id="Source" ref="Source" placeholder="Source" />
             <input type="text" id="LinkHref" ref="LinkHref" placeholder="Link href" />
+            <input type="text" id="Type" ref="Type" placeholder="Type" />
+            <input type="text" id="GameId" ref="GameId" placeholder="When entering GameId use commas to separate each one. I.E hello,test,hey" />
+            <input type="text" id="FeaturedImage" ref="FeaturedImage" placeholder="Featured Image" />
             <WysiwygEditor id={this.props.id}/>
             <button type="submit" className="btn waves-effect waves-light">Submit</button>
           </form>
@@ -94,6 +100,9 @@ export default class ArticleDetails extends TrackerReact(Component) {
             <input type="text" id="Slug" ref="Slug" placeholder={article.slug} defaultValue ={article.slug} />
             <input type="text" id="Source" ref="Source" placeholder={article.source} defaultValue ={article.source} />
             <input type="text" id="LinkHref" ref="LinkHref" placeholder={article.link.href} defaultValue ={article.link.href} />
+            <input type="text" id="Type" ref="Type" placeholder={article.type} defaultValue={article.type} />
+            <input type="text" id="GameId" ref="GameId"  placeholder={article.gameId} defaultValue={article.gameId} />
+            <input type="text" id="FeaturedImage" ref="FeaturedImage" placeholder={article.featuredImage} defaultValue={article.featuredImage} />
             <WysiwygEditor id={this.props.id}/>
             <button type="submit" className="btn waves-effect waves-light">Submit</button>
           </form>
